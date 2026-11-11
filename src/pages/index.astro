@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
+---
+
+<Layout title={`${site.name} | Lash Extensions in ${site.area}`} description={site.tagline}>
+  <main class="mx-auto max-w-2xl px-6 py-24 text-center">
+    <h1 class="font-display text-4xl text-ink">{site.name}</h1>
+    <p class="mt-2 text-muted">Lash extensions in {site.area}</p>
+    <p class="mt-6 text-sm text-muted">Phase 1 scaffold placeholder — full Home page sections land in Phase 2.</p>
+  </main>
+</Layout>

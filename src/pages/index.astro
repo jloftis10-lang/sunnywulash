@@ -15,6 +15,7 @@ import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
 import gallery06 from "../assets/gallery/sunny-wu-lash-06.png";
 import gallery07 from "../assets/gallery/sunny-wu-lash-07.png";
 import gallery08 from "../assets/gallery/sunny-wu-lash-08.png";
+import aboutPhoto from "../assets/about-sunny.png";
 
 const galleryAssets: Record<string, ImageMetadata> = {
   "sunny-wu-lash-01.png": gallery01,
@@ -109,8 +110,15 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
     <!-- About -->
     <section id="about" class="border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto grid max-w-4xl items-center gap-10 sm:grid-cols-2">
-        <div class="flex aspect-square items-center justify-center rounded-2xl border border-dashed border-line bg-canvas text-sm text-muted">
-          Owner photo coming soon
+        <div class="aspect-square overflow-hidden rounded-2xl bg-canvas">
+          <Image
+            src={aboutPhoto}
+            alt={`${site.about.ownerName}, owner of ${site.name}`}
+            width={400}
+            height={400}
+            loading="lazy"
+            class="h-full w-full object-cover"
+          />
         </div>
         <div>
           <h2 class="font-display text-3xl text-ink">Meet {site.about.ownerName}</h2>

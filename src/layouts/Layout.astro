@@ -1,12 +1,18 @@
 ---
 import "../styles/global.css";
+import { site } from "../data/site";
 
 interface Props {
   title: string;
   description: string;
+  image?: string; // absolute URL — falls back to a real gallery photo, see pages
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, image, structuredData } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const resolvedImage = image ? new URL(image, Astro.site).toString() : undefined;
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 ---
 
 <!doctype html>
@@ -14,12 +20,55 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <!-- Open Graph / Twitter meta and JSON-LD are added in Phase 4. -->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {resolvedImage && <meta property="og:image" content={resolvedImage} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={resolvedImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {resolvedImage && <meta name="twitter:image" content={resolvedImage} />}
+
+    {structuredData && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(structuredData)}
+      />
+    )}
+
+    {ga4Id && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script define:vars={{ ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag("js", new Date());
+          gtag("config", ga4Id);
+        </script>
+      </>
+    )}
   </head>
   <body class="font-body text-ink">
     <slot />
+    {ga4Id && (
+      <script>
+        document.addEventListener("click", (event) => {
+          const target = event.target instanceof Element ? event.target.closest("[data-analytics-event]") : null;
+          const eventName = target?.getAttribute("data-analytics-event");
+          if (eventName && typeof window.gtag === "function") {
+            window.gtag("event", eventName);
+          }
+        });
+      </script>
+    )}
   </body>
 </html>

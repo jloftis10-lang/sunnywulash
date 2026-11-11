@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -34,9 +34,56 @@ const fullAddress = site.address
   ? `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`
   : "";
 const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+
+// Share-preview image: no dedicated logo or hero photo exists yet, so this
+// uses a real, representative gallery photo rather than a placeholder.
+// Swap for a proper logo/hero image once one exists.
+const ogImageResult = await getImage({ src: gallery05, width: 1200, height: 630 });
+const ogImage = ogImageResult.src;
+
+const hoursSpecification = {
+  "@type": "OpeningHoursSpecification",
+  dayOfWeek: site.hours.map((entry) => entry.day),
+  opens: "08:00",
+  closes: "20:00",
+};
+
+const sameAs = [site.social.instagram, site.social.facebook, site.social.yelp].filter(Boolean);
+
+// priceRange and logo are intentionally omitted: no real pricing exists yet
+// (every service price is still a TODO) and there's no logo file yet either
+// — including either would mean inventing a value schema.org would treat as
+// fact. Add both once the client provides real numbers / a logo.
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  name: site.name,
+  url: new URL("/", Astro.site).toString(),
+  image: new URL(ogImage, Astro.site).toString(),
+  telephone: `+1${site.phone.replace(/\D/g, "")}`,
+  ...(site.address
+    ? {
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: site.address.street,
+          addressLocality: site.address.city,
+          addressRegion: site.address.state,
+          postalCode: site.address.zip,
+          addressCountry: "US",
+        },
+      }
+    : { areaServed: site.serviceArea }),
+  openingHoursSpecification: hoursSpecification,
+  sameAs,
+};
 ---
 
-<Layout title={`${site.name} | Lash Extensions in ${site.area}`} description={site.tagline}>
+<Layout
+  title={`${site.name} | Lash Extensions in ${site.area}`}
+  description={site.tagline}
+  image={ogImage}
+  structuredData={structuredData}
+>
   <Header />
 
   <main>

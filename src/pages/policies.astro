@@ -1,13 +1,24 @@
 ---
+import { getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
+import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
+
+// Same share-preview image as Home — see the note there about why this
+// is a real gallery photo rather than a logo.
+const ogImageResult = await getImage({ src: gallery05, width: 1200, height: 630 });
+const ogImage = ogImageResult.src;
 ---
 
-<Layout title={`Policies & Aftercare | ${site.name}`} description={`Booking, deposit, cancellation, and aftercare information for ${site.name}.`}>
+<Layout
+  title={`Policies & Aftercare | ${site.name}`}
+  description={`Booking, deposit, cancellation, and aftercare information for ${site.name}.`}
+  image={ogImage}
+>
   <Header />
 
   <main class="mx-auto max-w-3xl px-6 py-16 sm:py-20">

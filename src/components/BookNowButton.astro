@@ -7,19 +7,23 @@ interface Props {
   label?: string;
 }
 
-const { variant = "primary", class: className = "", label = "Book Now" } = Astro.props;
+const { variant = "primary", class: className = "", label = "Text to Book" } = Astro.props;
 
 const base = "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition min-h-11 min-w-11";
 const styles =
   variant === "primary"
     ? "bg-primary text-white hover:bg-primary-dark"
     : "border border-primary text-primary hover:bg-surface";
+
+// sms:/tel:/mailto: links don't open a "page", so target=_blank and
+// rel=noopener are meaningless (and can misbehave) for them — only add
+// those attributes for actual http(s) links.
+const isHttp = site.bookingUrl.startsWith("http");
 ---
 
 <a
   href={site.bookingUrl}
-  target="_blank"
-  rel="noopener noreferrer"
+  {...(isHttp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
   class={`${base} ${styles} ${className}`}
   data-analytics-event="book_now_click"
 >

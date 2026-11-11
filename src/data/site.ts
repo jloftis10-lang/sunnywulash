@@ -106,10 +106,12 @@ export const site: SiteConfig = {
   phone: "(858) 231-7210",
   // Real, from the client's own business card.
   email: "sunnywu0916@yahoo.com",
-  // No separate booking app exists — the client confirmed Yelp's "Request an
-  // Appointment" flow is the only booking mechanism. We link to it; we never
-  // build booking ourselves.
-  bookingUrl: "https://www.yelp.com/biz/sunny-wu-lash-san-marcos-2",
+  // No booking system — the client wants clients to text or email her
+  // directly rather than go through Yelp's request-appointment flow. This
+  // is the primary CTA destination everywhere "Book Now" appears. Yelp
+  // stays as a secondary link (footer icon, reviews, JSON-LD sameAs) but
+  // is no longer the main conversion path.
+  bookingUrl: "sms:+18582317210",
   hours: [
     { day: "Monday", ...allDaysOpen },
     { day: "Tuesday", ...allDaysOpen },

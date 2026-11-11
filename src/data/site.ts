@@ -100,10 +100,12 @@ const allDaysOpen = { open: "8:00 AM", close: "8:00 PM" };
 
 export const site: SiteConfig = {
   name: "Sunny Wu Lash",
-  tagline: "TODO: tagline",
+  // Real, from the client's own business card.
+  tagline: "A master lash stylist",
   area: "San Marcos, CA",
   phone: "(858) 231-7210",
-  email: "TODO: email",
+  // Real, from the client's own business card.
+  email: "sunnywu0916@yahoo.com",
   // No separate booking app exists — the client confirmed Yelp's "Request an
   // Appointment" flow is the only booking mechanism. We link to it; we never
   // build booking ourselves.

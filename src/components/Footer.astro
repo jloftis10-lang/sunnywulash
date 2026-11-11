@@ -1,0 +1,60 @@
+---
+import { site } from "../data/site";
+import BookNowButton from "./BookNowButton.astro";
+
+const year = new Date().getFullYear();
+
+const socialLinks = [
+  { key: "instagram", url: site.social.instagram, label: "Instagram" },
+  { key: "facebook", url: site.social.facebook, label: "Facebook" },
+  { key: "yelp", url: site.social.yelp, label: "Yelp" },
+  { key: "linkedin", url: site.social.linkedin, label: "LinkedIn" },
+].filter((item) => item.url);
+---
+
+<footer class="border-t border-line bg-surface">
+  <div class="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-10 text-center">
+    <p class="font-display text-lg text-ink">{site.name}</p>
+
+    <div class="flex items-center gap-4">
+      {socialLinks.map((item) => (
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={item.label}
+          class="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line text-ink hover:border-primary hover:text-primary"
+        >
+          {item.key === "instagram" && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          )}
+          {item.key === "facebook" && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          )}
+          {item.key === "yelp" && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l2.9 6.6L22 9.3l-5.3 4.6L18.2 21 12 17.1 5.8 21l1.5-7.1L2 9.3l7.1-.7z"></path>
+            </svg>
+          )}
+          {item.key === "linkedin" && (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          )}
+        </a>
+      ))}
+    </div>
+
+    <BookNowButton />
+
+    <p class="text-xs text-muted">&copy; {year} {site.name}. All rights reserved.</p>
+  </div>
+</footer>

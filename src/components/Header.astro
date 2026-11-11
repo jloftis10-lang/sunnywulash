@@ -1,0 +1,66 @@
+---
+import { site } from "../data/site";
+import BookNowButton from "./BookNowButton.astro";
+
+const navLinks = [
+  { label: "Services", href: "/#services" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "About", href: "/#about" },
+  { label: "Policies", href: "/policies" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-canvas/95 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a href="/" class="font-display text-xl font-semibold text-ink">
+      {site.name}
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-sm font-medium text-ink hover:text-primary">
+          {link.label}
+        </a>
+      ))}
+      <BookNowButton />
+    </nav>
+
+    <button
+      id="mobile-menu-button"
+      type="button"
+      class="flex min-h-11 min-w-11 items-center justify-center md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" aria-label="Mobile" class="hidden flex-col gap-1 border-t border-line px-6 py-4 md:hidden">
+    {navLinks.map((link) => (
+      <a href={link.href} class="rounded-lg px-2 py-3 text-base font-medium text-ink hover:bg-surface">
+        {link.label}
+      </a>
+    ))}
+    <div class="pt-2">
+      <BookNowButton class="w-full" />
+    </div>
+  </nav>
+</header>
+
+<script>
+  const button = document.getElementById("mobile-menu-button");
+  const menu = document.getElementById("mobile-menu");
+
+  button?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("flex");
+    menu?.classList.toggle("hidden");
+    button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    button.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  });
+</script>

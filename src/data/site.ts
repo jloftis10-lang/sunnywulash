@@ -54,6 +54,12 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface About {
+  ownerName: string;
+  bio: string;
+  training: string;
+}
+
 export interface Brand {
   colors: {
     primary: string;
@@ -86,6 +92,7 @@ export interface SiteConfig {
   faqs: Faq[];
   reviews: Review[];
   gallery: GalleryImage[];
+  about: About;
   brand: Brand;
 }
 
@@ -198,7 +205,21 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-03.png", alt: "Closed eyes with full volume lash extensions and under-eye gel pads during an application" },
     { src: "sunny-wu-lash-04.png", alt: "Finished eye with a numbered lash-mapping chart overlaid showing precise lash placement" },
     { src: "sunny-wu-lash-05.png", alt: "Finished dramatic volume lash extensions with under-eye gel pads still in place" },
+    { src: "sunny-wu-lash-06.png", alt: "Style reference chart showing four different lash extension looks, each labeled in Chinese" },
+    { src: "sunny-wu-lash-07.png", alt: "Client relaxing in the studio chair during a lash appointment" },
+    { src: "sunny-wu-lash-08.png", alt: "Close-up profile view of finished volume lash extensions" },
   ],
+  about: {
+    // Real, from the client's own Yelp business-owner listing.
+    ownerName: "Sunny W.",
+    // Yelp's "About the Business" field is truncated mid-sentence
+    // ("Always master stylist; unique technique; custom design; best
+    // quality…") — using a cut-off fragment as site copy would read as
+    // broken, so this stays a TODO until the client sends the full bio
+    // rather than guessing how it ends.
+    bio: "TODO: full bio from client",
+    training: "TODO: training/certifications",
+  },
   brand: {
     // Light purple / lavender, per the client's stated preference. See
     // src/styles/global.css for the full token set and contrast notes —

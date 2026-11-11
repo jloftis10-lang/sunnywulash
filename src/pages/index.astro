@@ -1,12 +1,187 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StickyBookBar from "../components/StickyBookBar.astro";
+import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
+
+import gallery01 from "../assets/gallery/sunny-wu-lash-01.png";
+import gallery02 from "../assets/gallery/sunny-wu-lash-02.png";
+import gallery03 from "../assets/gallery/sunny-wu-lash-03.png";
+import gallery04 from "../assets/gallery/sunny-wu-lash-04.png";
+import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
+import gallery06 from "../assets/gallery/sunny-wu-lash-06.png";
+import gallery07 from "../assets/gallery/sunny-wu-lash-07.png";
+import gallery08 from "../assets/gallery/sunny-wu-lash-08.png";
+
+const galleryAssets: Record<string, ImageMetadata> = {
+  "sunny-wu-lash-01.png": gallery01,
+  "sunny-wu-lash-02.png": gallery02,
+  "sunny-wu-lash-03.png": gallery03,
+  "sunny-wu-lash-04.png": gallery04,
+  "sunny-wu-lash-05.png": gallery05,
+  "sunny-wu-lash-06.png": gallery06,
+  "sunny-wu-lash-07.png": gallery07,
+  "sunny-wu-lash-08.png": gallery08,
+};
+
+const telHref = `tel:+1${site.phone.replace(/\D/g, "")}`;
+const smsHref = `sms:+1${site.phone.replace(/\D/g, "")}`;
+const fullAddress = site.address
+  ? `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`
+  : "";
+const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
 ---
 
 <Layout title={`${site.name} | Lash Extensions in ${site.area}`} description={site.tagline}>
-  <main class="mx-auto max-w-2xl px-6 py-24 text-center">
-    <h1 class="font-display text-4xl text-ink">{site.name}</h1>
-    <p class="mt-2 text-muted">Lash extensions in {site.area}</p>
-    <p class="mt-6 text-sm text-muted">Phase 1 scaffold placeholder — full Home page sections land in Phase 2.</p>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="mx-auto max-w-3xl px-6 py-16 text-center sm:py-24">
+      <h1 class="font-display text-4xl font-semibold text-ink sm:text-5xl">
+        {site.name} — Lash Extensions in {site.area}
+      </h1>
+      <p class="mt-4 text-lg text-muted">{site.tagline}</p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <BookNowButton />
+        <a
+          href="#services"
+          class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary"
+        >
+          See Services
+        </a>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+      <div class="mx-auto max-w-5xl">
+        <h2 class="text-center font-display text-3xl text-ink">Services &amp; Pricing</h2>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2">
+          {site.services.map((service) => (
+            <div class="rounded-2xl border border-line bg-canvas p-6">
+              <h3 class="font-display text-xl text-ink">{service.name}</h3>
+              <p class="mt-2 text-sm leading-6 text-muted">{service.description}</p>
+              <div class="mt-4 flex items-center justify-between text-sm font-semibold text-ink">
+                <span>{service.price}</span>
+                <span class="text-muted">{service.duration}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="px-6 py-16 sm:py-20">
+      <div class="mx-auto max-w-5xl">
+        <h2 class="text-center font-display text-3xl text-ink">Gallery</h2>
+        <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {site.gallery.map((item, index) => (
+            <div class="aspect-square overflow-hidden rounded-xl bg-surface">
+              <Image
+                src={galleryAssets[item.src]}
+                alt={item.alt}
+                width={400}
+                height={400}
+                loading={index < 3 ? "eager" : "lazy"}
+                class="h-full w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+        <div class="mt-8 text-center">
+          <a
+            href={site.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-semibold text-primary hover:text-primary-dark"
+          >
+            Follow on Instagram →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+      <div class="mx-auto grid max-w-4xl items-center gap-10 sm:grid-cols-2">
+        <div class="flex aspect-square items-center justify-center rounded-2xl border border-dashed border-line bg-canvas text-sm text-muted">
+          Owner photo coming soon
+        </div>
+        <div>
+          <h2 class="font-display text-3xl text-ink">Meet {site.about.ownerName}</h2>
+          <p class="mt-4 text-sm leading-7 text-muted">{site.about.bio}</p>
+          <p class="mt-4 text-sm leading-7 text-muted">
+            <span class="font-semibold text-ink">Training: </span>
+            {site.about.training}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews (hidden entirely if empty) -->
+    {site.reviews.length > 0 && (
+      <section class="px-6 py-16 sm:py-20">
+        <div class="mx-auto max-w-5xl">
+          <h2 class="text-center font-display text-3xl text-ink">What Clients Say</h2>
+          <div class="mt-10 grid gap-6 sm:grid-cols-3">
+            {site.reviews.map((review) => (
+              <figure class="rounded-2xl border border-line bg-canvas p-6">
+                <blockquote class="text-sm leading-6 text-ink">
+                  &ldquo;{review.text}&rdquo;
+                </blockquote>
+                <figcaption class="mt-4 text-xs font-semibold text-muted">
+                  {review.author} · {review.source}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Visit -->
+    <section class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl text-ink">Visit the Studio</h2>
+
+        {site.address && (
+          <p class="mt-4 text-sm leading-7 text-muted">
+            {site.address.street}<br />
+            {site.address.city}, {site.address.state} {site.address.zip}
+          </p>
+        )}
+        {!site.address && site.serviceArea && (
+          <p class="mt-4 text-sm leading-7 text-muted">{site.serviceArea}</p>
+        )}
+
+        <ul class="mt-6 space-y-1 text-sm text-muted">
+          {site.hours.map((entry) => (
+            <li>
+              <span class="font-medium text-ink">{entry.day}:</span> {entry.open} – {entry.close}
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href={telHref} class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
+            Call {site.phone}
+          </a>
+          <a href={smsHref} class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
+            Text {site.phone}
+          </a>
+          <a href={mapsHref} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
+            Get Directions
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <Footer />
+  <StickyBookBar />
 </Layout>

@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StickyBookBar from "../components/StickyBookBar.astro";
+import BookNowButton from "../components/BookNowButton.astro";
+import { site } from "../data/site";
+import aboutPhoto from "../assets/about-sunny.png";
+---
+
+<Layout
+  title={`About ${site.about.ownerName} | ${site.name}`}
+  description={`Meet ${site.about.ownerName}, the lash artist behind ${site.name} in ${site.area}.`}
+>
+  <Header />
+
+  <main class="mx-auto max-w-4xl px-6 py-16 sm:py-20">
+    <div class="grid items-center gap-10 sm:grid-cols-2">
+      <div class="aspect-square overflow-hidden rounded-2xl bg-surface">
+        <Image
+          src={aboutPhoto}
+          alt={`${site.about.ownerName}, owner of ${site.name}`}
+          width={500}
+          height={500}
+          loading="eager"
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div>
+        <h1 class="font-display text-4xl text-ink">Meet {site.about.ownerName}</h1>
+        <p class="mt-2 text-sm font-semibold uppercase tracking-wide text-primary">{site.tagline}</p>
+        <p class="mt-4 text-sm leading-7 text-muted">{site.about.bio}</p>
+        <p class="mt-4 text-sm leading-7 text-muted">
+          <span class="font-semibold text-ink">Training: </span>
+          {site.about.training}
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-14 flex justify-center">
+      <BookNowButton />
+    </div>
+  </main>
+
+  <Footer />
+  <StickyBookBar />
+</Layout>

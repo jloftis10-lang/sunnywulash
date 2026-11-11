@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StickyBookBar from "../components/StickyBookBar.astro";
+import BookNowButton from "../components/BookNowButton.astro";
+import { site } from "../data/site";
+
+import gallery01 from "../assets/gallery/sunny-wu-lash-01.png";
+import gallery02 from "../assets/gallery/sunny-wu-lash-02.png";
+import gallery03 from "../assets/gallery/sunny-wu-lash-03.png";
+import gallery04 from "../assets/gallery/sunny-wu-lash-04.png";
+import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
+import gallery06 from "../assets/gallery/sunny-wu-lash-06.png";
+import gallery07 from "../assets/gallery/sunny-wu-lash-07.png";
+import gallery08 from "../assets/gallery/sunny-wu-lash-08.png";
+
+const galleryAssets: Record<string, ImageMetadata> = {
+  "sunny-wu-lash-01.png": gallery01,
+  "sunny-wu-lash-02.png": gallery02,
+  "sunny-wu-lash-03.png": gallery03,
+  "sunny-wu-lash-04.png": gallery04,
+  "sunny-wu-lash-05.png": gallery05,
+  "sunny-wu-lash-06.png": gallery06,
+  "sunny-wu-lash-07.png": gallery07,
+  "sunny-wu-lash-08.png": gallery08,
+};
+---
+
+<Layout
+  title={`Gallery | ${site.name}`}
+  description={`Real lash extension work by ${site.name} in ${site.area}.`}
+>
+  <Header />
+
+  <main class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <h1 class="text-center font-display text-4xl text-ink">Gallery</h1>
+    <p class="mt-3 text-center text-sm text-muted">Real sets, real clients — no stock photos.</p>
+
+    <div class="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {site.gallery.map((item, index) => (
+        <div class="aspect-square overflow-hidden rounded-xl bg-surface">
+          <Image
+            src={galleryAssets[item.src]}
+            alt={item.alt}
+            width={400}
+            height={400}
+            loading={index < 3 ? "eager" : "lazy"}
+            class="h-full w-full object-cover"
+          />
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-8 text-center">
+      <a
+        href={site.social.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-semibold text-primary hover:text-primary-dark"
+      >
+        Follow on Instagram →
+      </a>
+    </div>
+
+    <div class="mt-14 flex justify-center">
+      <BookNowButton />
+    </div>
+  </main>
+
+  <Footer />
+  <StickyBookBar />
+</Layout>

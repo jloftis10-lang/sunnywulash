@@ -7,26 +7,20 @@ import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
 
-import gallery01 from "../assets/gallery/sunny-wu-lash-01.png";
 import gallery02 from "../assets/gallery/sunny-wu-lash-02.png";
-import gallery03 from "../assets/gallery/sunny-wu-lash-03.png";
 import gallery04 from "../assets/gallery/sunny-wu-lash-04.png";
 import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
-import gallery06 from "../assets/gallery/sunny-wu-lash-06.png";
-import gallery07 from "../assets/gallery/sunny-wu-lash-07.png";
 import gallery08 from "../assets/gallery/sunny-wu-lash-08.png";
 import aboutPhoto from "../assets/about-sunny.png";
 
-const galleryAssets: Record<string, ImageMetadata> = {
-  "sunny-wu-lash-01.png": gallery01,
-  "sunny-wu-lash-02.png": gallery02,
-  "sunny-wu-lash-03.png": gallery03,
-  "sunny-wu-lash-04.png": gallery04,
-  "sunny-wu-lash-05.png": gallery05,
-  "sunny-wu-lash-06.png": gallery06,
-  "sunny-wu-lash-07.png": gallery07,
-  "sunny-wu-lash-08.png": gallery08,
-};
+// A short, representative preview strip — the full 8-photo set lives on
+// /gallery so Home stays a quick highlight reel, not a second copy of it.
+const galleryPreview = [
+  { src: gallery05, alt: "Finished dramatic volume lash extensions with under-eye gel pads still in place" },
+  { src: gallery02, alt: "Close-up comparison of natural lashes before and after a full set of volume lash extensions" },
+  { src: gallery08, alt: "Close-up profile view of finished volume lash extensions" },
+  { src: gallery04, alt: "Finished eye with a numbered lash-mapping chart overlaid showing precise lash placement" },
+];
 
 const telHref = `tel:+1${site.phone.replace(/\D/g, "")}`;
 const smsHref = `sms:+1${site.phone.replace(/\D/g, "")}`;
@@ -96,7 +90,7 @@ const structuredData = {
       <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
         <BookNowButton />
         <a
-          href="#services"
+          href="/services"
           class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary"
         >
           See Services
@@ -104,77 +98,70 @@ const structuredData = {
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="border-t border-line bg-surface px-6 py-16 sm:py-20">
-      <div class="mx-auto max-w-5xl">
-        <h2 class="text-center font-display text-3xl text-ink">Services &amp; Pricing</h2>
-        <div class="mt-10 grid gap-6 sm:grid-cols-2">
+    <!-- Services teaser -->
+    <section class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-display text-3xl text-ink">What I Offer</h2>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           {site.services.map((service) => (
-            <div class="rounded-2xl border border-line bg-canvas p-6">
-              <h3 class="font-display text-xl text-ink">{service.name}</h3>
-              <p class="mt-2 text-sm leading-6 text-muted">{service.description}</p>
-              <div class="mt-4 flex items-center justify-between text-sm font-semibold text-ink">
-                <span>{service.price}</span>
-                <span class="text-muted">{service.duration}</span>
-              </div>
-            </div>
+            <span class="rounded-full border border-line bg-canvas px-4 py-2 text-sm font-medium text-ink">
+              {service.name}
+            </span>
           ))}
         </div>
+        <a
+          href="/services"
+          class="mt-8 inline-flex text-sm font-semibold text-primary hover:text-primary-dark"
+        >
+          See Full Services &amp; Pricing →
+        </a>
       </div>
     </section>
 
-    <!-- Gallery -->
-    <section id="gallery" class="px-6 py-16 sm:py-20">
-      <div class="mx-auto max-w-5xl">
-        <h2 class="text-center font-display text-3xl text-ink">Gallery</h2>
-        <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {site.gallery.map((item, index) => (
+    <!-- Gallery preview -->
+    <section class="px-6 py-16 sm:py-20">
+      <div class="mx-auto max-w-4xl">
+        <h2 class="text-center font-display text-3xl text-ink">Recent Work</h2>
+        <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {galleryPreview.map((item, index) => (
             <div class="aspect-square overflow-hidden rounded-xl bg-surface">
               <Image
-                src={galleryAssets[item.src]}
+                src={item.src}
                 alt={item.alt}
-                width={400}
-                height={400}
-                loading={index < 3 ? "eager" : "lazy"}
+                width={300}
+                height={300}
+                loading={index < 2 ? "eager" : "lazy"}
                 class="h-full w-full object-cover"
               />
             </div>
           ))}
         </div>
         <div class="mt-8 text-center">
-          <a
-            href={site.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm font-semibold text-primary hover:text-primary-dark"
-          >
-            Follow on Instagram →
+          <a href="/gallery" class="text-sm font-semibold text-primary hover:text-primary-dark">
+            View Full Gallery →
           </a>
         </div>
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="border-t border-line bg-surface px-6 py-16 sm:py-20">
-      <div class="mx-auto grid max-w-4xl items-center gap-10 sm:grid-cols-2">
-        <div class="aspect-square overflow-hidden rounded-2xl bg-canvas">
+    <!-- About teaser -->
+    <section class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+      <div class="mx-auto flex max-w-xl flex-col items-center gap-5 text-center">
+        <div class="h-28 w-28 overflow-hidden rounded-full bg-canvas">
           <Image
             src={aboutPhoto}
             alt={`${site.about.ownerName}, owner of ${site.name}`}
-            width={400}
-            height={400}
+            width={200}
+            height={200}
             loading="lazy"
             class="h-full w-full object-cover"
           />
         </div>
-        <div>
-          <h2 class="font-display text-3xl text-ink">Meet {site.about.ownerName}</h2>
-          <p class="mt-4 text-sm leading-7 text-muted">{site.about.bio}</p>
-          <p class="mt-4 text-sm leading-7 text-muted">
-            <span class="font-semibold text-ink">Training: </span>
-            {site.about.training}
-          </p>
-        </div>
+        <h2 class="font-display text-3xl text-ink">Meet {site.about.ownerName}</h2>
+        <p class="text-sm leading-7 text-muted">{site.tagline}</p>
+        <a href="/about" class="text-sm font-semibold text-primary hover:text-primary-dark">
+          Learn More About {site.about.ownerName} →
+        </a>
       </div>
     </section>
 

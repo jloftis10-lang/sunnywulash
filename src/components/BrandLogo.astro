@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/sunnywu-logo.png";
+import { site } from "../data/site";
+
+interface Props {
+  hero?: boolean;
+}
+
+const { hero = false } = Astro.props;
+---
+
+<Image
+  src={logo}
+  alt={site.name}
+  width={528}
+  height={176}
+  loading="eager"
+  class={hero ? "h-auto w-full max-w-md" : "h-auto w-52 sm:w-60"}
+/>

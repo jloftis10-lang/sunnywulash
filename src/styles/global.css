@@ -1,20 +1,17 @@
 @import "tailwindcss";
 
-/*
-  Brand palette: light purple/lavender, per the client's stated preference.
-  Every text/background pairing below is checked against WCAG AA (4.5:1 for
-  normal text): ink/muted on canvas or surface, and white text on primary/
-  primary-dark, all clear 4.5:1 with margin. --surface and --line are decorative
-  only (never used for text), so they aren't contrast-checked.
-*/
+/* Lavender and periwinkle with deep violet accents, inspired by Sunny's card. */
 @theme {
-  --color-canvas: #ffffff;
-  --color-surface: #faf8ff;
-  --color-line: #e4dff0;
-  --color-ink: #231b2e;
-  --color-muted: #6b6478;
-  --color-primary: #7c3aed;
-  --color-primary-dark: #6d28d9;
+  --color-canvas: #fffaf7;
+  --color-surface: #f0e7f7;
+  --color-line: #cfc1df;
+  --color-ink: #302547;
+  --color-muted: #605878;
+  --color-primary: #55418c;
+  --color-primary-dark: #3e2d6c;
+  --color-lavender: #e7d7f3;
+  --color-periwinkle: #d8d9f1;
+  --color-night: #302547;
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -23,4 +20,73 @@
 body {
   background-color: var(--color-canvas);
   color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 5px;
+}
+
+.home-hero {
+  max-width: none;
+  background: var(--color-lavender);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.home-hero h1 {
+  max-width: 19ch;
+  margin-inline: 0;
+  color: var(--color-primary-dark);
+  line-height: 1.12;
+}
+
+.home-hero p {
+  max-width: 38rem;
+  margin-inline: auto;
+}
+
+.home-services {
+  background: var(--color-surface);
+}
+
+.home-about {
+  background: var(--color-periwinkle);
+}
+
+.home-reviews {
+  background: var(--color-lavender);
+}
+
+.home-visit {
+  background: var(--color-night);
+  border-color: var(--color-night);
+}
+
+.home-visit .text-ink {
+  color: #fff;
+}
+
+.home-visit .text-muted {
+  color: #e3d9ef;
+}
+
+.home-visit a {
+  color: #fff;
+  border-color: #9d8ab7;
+}
+
+.home-visit a:hover {
+  background: var(--color-lavender);
+  color: var(--color-ink);
+  border-color: var(--color-lavender);
+}
+
+.home-visit a:focus-visible {
+  outline-color: var(--color-lavender);
 }

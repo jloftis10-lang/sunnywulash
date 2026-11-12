@@ -1,6 +1,7 @@
 ---
 import { site } from "../data/site";
 import BookNowButton from "./BookNowButton.astro";
+import BrandLogo from "./BrandLogo.astro";
 
 const year = new Date().getFullYear();
 
@@ -14,7 +15,7 @@ const socialLinks = [
 
 <footer class="border-t border-line bg-surface">
   <div class="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-10 text-center">
-    <p class="font-display text-lg text-ink">{site.name}</p>
+    <a href="/" class="inline-block"><BrandLogo /></a>
 
     <div class="flex items-center gap-4">
       {socialLinks.map((item) => (

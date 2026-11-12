@@ -2,13 +2,14 @@
 import { Image, getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import BrandLogo from "../components/BrandLogo.astro";
 import Footer from "../components/Footer.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
 
 import gallery02 from "../assets/gallery/sunny-wu-lash-02.png";
-import gallery04 from "../assets/gallery/sunny-wu-lash-04.png";
+import gallery01 from "../assets/gallery/sunny-wu-lash-01.png";
 import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
 import gallery08 from "../assets/gallery/sunny-wu-lash-08.png";
 import aboutPhoto from "../assets/about-sunny.png";
@@ -19,7 +20,7 @@ const galleryPreview = [
   { src: gallery05, alt: "Finished dramatic volume lash extensions with under-eye gel pads still in place" },
   { src: gallery02, alt: "Close-up comparison of natural lashes before and after a full set of volume lash extensions" },
   { src: gallery08, alt: "Close-up profile view of finished volume lash extensions" },
-  { src: gallery04, alt: "Finished eye with a numbered lash-mapping chart overlaid showing precise lash placement" },
+  { src: gallery01, alt: "Collage of finished lash extensions with numbered lash maps showing different lengths and placement" },
 ];
 
 const telHref = `tel:+1${site.phone.replace(/\D/g, "")}`;
@@ -27,9 +28,7 @@ const smsHref = `sms:+1${site.phone.replace(/\D/g, "")}`;
 // Home studio — no street address exists to map to, and a "Get Directions"
 // link must never be derived from one. See site.ts's serviceArea comment.
 
-// Share-preview image: no dedicated logo or hero photo exists yet, so this
-// uses a real, representative gallery photo rather than a placeholder.
-// Swap for a proper logo/hero image once one exists.
+// Use the real lash photo from the hero as the share-preview image.
 const ogImageResult = await getImage({ src: gallery05, width: 1200, height: 630 });
 const ogImage = ogImageResult.src;
 
@@ -42,10 +41,7 @@ const hoursSpecification = {
 
 const sameAs = [site.social.instagram, site.social.facebook, site.social.yelp].filter(Boolean);
 
-// priceRange and logo are intentionally omitted: no real pricing exists yet
-// (every service price is still a TODO) and there's no logo file yet either
-// — including either would mean inventing a value schema.org would treat as
-// fact. Add both once the client provides real numbers / a logo.
+// Add a price range when the client provides confirmed service prices.
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
@@ -80,24 +76,44 @@ const structuredData = {
 
   <main>
     <!-- Hero -->
-    <section class="mx-auto max-w-3xl px-6 py-16 text-center sm:py-24">
-      <h1 class="font-display text-4xl font-semibold text-ink sm:text-5xl">
-        {site.name} — Lash Extensions in {site.area}
-      </h1>
-      <p class="mt-4 text-lg text-muted">{site.tagline}</p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-        <BookNowButton />
-        <a
-          href="/services"
-          class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary"
-        >
-          See Services
-        </a>
+    <section class="home-hero px-6 py-10 sm:py-16">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 lg:gap-16">
+        <div class="text-left">
+          <BrandLogo hero />
+          <h1 class="mt-6 font-display text-4xl font-semibold text-ink sm:text-5xl">
+            Lash Extensions in {site.area}
+          </h1>
+          <p class="mt-4 text-lg text-muted">{site.tagline}</p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <BookNowButton />
+            <a
+              href="/services"
+              class="inline-flex min-h-11 items-center justify-center rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white"
+            >
+              See Services
+            </a>
+          </div>
+          <a href={telHref} class="mt-5 inline-block text-sm font-medium text-primary underline decoration-primary/40 underline-offset-4">
+            {site.phone}
+          </a>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] border-4 border-canvas bg-surface shadow-xl shadow-primary/15">
+          <Image
+            src={gallery05}
+            alt="Close-up of a finished set of Sunny's full lash extensions"
+            width={560}
+            height={560}
+            sizes="(min-width: 1152px) 520px, (min-width: 768px) 46vw, 100vw"
+            loading="eager"
+            fetchpriority="high"
+            class="aspect-square h-auto w-full object-cover"
+          />
+        </div>
       </div>
     </section>
 
     <!-- Services teaser -->
-    <section class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+    <section class="home-services border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="font-display text-3xl text-ink">What I Offer</h2>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -117,7 +133,7 @@ const structuredData = {
     </section>
 
     <!-- Gallery preview -->
-    <section class="px-6 py-16 sm:py-20">
+    <section class="home-gallery px-6 py-16 sm:py-20">
       <div class="mx-auto max-w-4xl">
         <h2 class="text-center font-display text-3xl text-ink">Recent Work</h2>
         <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -143,7 +159,7 @@ const structuredData = {
     </section>
 
     <!-- About teaser -->
-    <section class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+    <section class="home-about border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto flex max-w-xl flex-col items-center gap-5 text-center">
         <div class="h-28 w-28 overflow-hidden rounded-full bg-canvas">
           <Image
@@ -165,7 +181,7 @@ const structuredData = {
 
     <!-- Reviews (hidden entirely if empty) -->
     {site.reviews.length > 0 && (
-      <section class="px-6 py-16 sm:py-20">
+      <section class="home-reviews px-6 py-16 sm:py-20">
         <div class="mx-auto max-w-5xl">
           <h2 class="text-center font-display text-3xl text-ink">What Clients Say</h2>
           <div class="mt-10 grid gap-6 sm:grid-cols-3">
@@ -185,7 +201,7 @@ const structuredData = {
     )}
 
     <!-- Visit -->
-    <section class="border-t border-line bg-surface px-6 py-16 sm:py-20">
+    <section class="home-visit border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="font-display text-3xl text-ink">Visit the Studio</h2>
 

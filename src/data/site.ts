@@ -229,10 +229,10 @@ export const site: SiteConfig = {
     // src/styles/global.css for the full token set and contrast notes —
     // every pairing used for text is checked against WCAG AA.
     colors: {
-      primary: "#7c3aed",
-      primaryDark: "#6d28d9",
-      ink: "#231b2e",
-      surface: "#faf8ff",
+      primary: "#55418c",
+      primaryDark: "#3e2d6c",
+      ink: "#302547",
+      surface: "#f0e7f7",
     },
     fonts: {
       display: "Fraunces",

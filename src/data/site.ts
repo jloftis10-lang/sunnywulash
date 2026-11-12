@@ -225,7 +225,8 @@ export const site: SiteConfig = {
     },
   ],
   policies: {
-    deposit: "TODO: deposit policy",
+    // Real, from the client directly.
+    deposit: "A 15% deposit is required to book.",
     // Real, from the client's exact words.
     cancellation: "Cancellations require at least 24 hours' notice. A $25 fee applies to cancellations made with less notice, though exceptions may be made for special circumstances.",
     lateArrival: "TODO: late arrival policy",
@@ -285,8 +286,8 @@ export const site: SiteConfig = {
     // src/styles/global.css for the full token set and contrast notes —
     // every pairing used for text is checked against WCAG AA.
     colors: {
-      primary: "#6b3fa0",
-      primaryDark: "#4a2a73",
+      primary: "#9b0f9b",
+      primaryDark: "#6b0a6b",
       ink: "#2a1a3d",
       surface: "#ede4f7",
     },

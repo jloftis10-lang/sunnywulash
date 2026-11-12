@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
-/* Light and dark purple, per the client's request — paired with the gold
-   logo. All text-color pairings below are checked against WCAG AA's
-   4.5:1 body-text contrast on canvas/surface — see the contrast notes
-   next to each token. */
+/* Light and dark purple, per the client's request. The primary accent is
+   tuned toward the vivid neon-magenta purple from the storefront photo she
+   shared — see --color-neon below. All text-color pairings are checked
+   against WCAG AA's 4.5:1 body-text contrast on canvas/surface — see the
+   contrast notes next to each token. */
 @theme {
   --color-canvas: #f9f6fd;
   --color-surface: #ede4f7;
@@ -12,13 +13,16 @@
   --color-ink: #2a1a3d;
   /* 7.3:1 on canvas, 6.3:1 on surface */
   --color-muted: #5e4a72;
-  /* 6.9:1 on canvas, 6.0:1 on surface, 7.4:1 against white button text */
-  --color-primary: #6b3fa0;
-  /* 10.5:1 on canvas — hover/darker state */
-  --color-primary-dark: #4a2a73;
+  /* 6.7:1 on canvas, 5.7:1 on surface, 7.2:1 against white button text */
+  --color-primary: #9b0f9b;
+  /* 10.4:1 on canvas — hover/darker state */
+  --color-primary-dark: #6b0a6b;
   --color-lilac: #e4d6f5;
   --color-periwinkle: #ded6f5;
   --color-plum: #241634;
+  /* The actual neon sign color (#f119f1) — decorative use only (glows,
+     shadows); too light for AA text contrast, see --color-primary above. */
+  --color-neon: #f119f1;
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;

@@ -41,7 +41,7 @@ summary:focus-visible {
 
 .home-hero h1 {
   max-width: 19ch;
-  margin-inline: auto;
+  margin-inline: 0;
   color: var(--color-primary-dark);
   line-height: 1.12;
 }

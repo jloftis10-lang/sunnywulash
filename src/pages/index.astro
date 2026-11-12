@@ -2,6 +2,7 @@
 import { Image, getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import BrandLogo from "../components/BrandLogo.astro";
 import Footer from "../components/Footer.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
@@ -29,9 +30,7 @@ const fullAddress = site.address
   : "";
 const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
 
-// Share-preview image: no dedicated logo or hero photo exists yet, so this
-// uses a real, representative gallery photo rather than a placeholder.
-// Swap for a proper logo/hero image once one exists.
+// Use the real lash photo from the hero as the share-preview image.
 const ogImageResult = await getImage({ src: gallery05, width: 1200, height: 630 });
 const ogImage = ogImageResult.src;
 
@@ -44,10 +43,7 @@ const hoursSpecification = {
 
 const sameAs = [site.social.instagram, site.social.facebook, site.social.yelp].filter(Boolean);
 
-// priceRange and logo are intentionally omitted: no real pricing exists yet
-// (every service price is still a TODO) and there's no logo file yet either
-// — including either would mean inventing a value schema.org would treat as
-// fact. Add both once the client provides real numbers / a logo.
+// Add a price range when the client provides confirmed service prices.
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
@@ -82,19 +78,39 @@ const structuredData = {
 
   <main>
     <!-- Hero -->
-    <section class="home-hero mx-auto max-w-3xl px-6 py-16 text-center sm:py-24">
-      <h1 class="font-display text-4xl font-semibold text-ink sm:text-5xl">
-        {site.name} — Lash Extensions in {site.area}
-      </h1>
-      <p class="mt-4 text-lg text-muted">{site.tagline}</p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-        <BookNowButton />
-        <a
-          href="/services"
-          class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary"
-        >
-          See Services
-        </a>
+    <section class="home-hero px-6 py-10 sm:py-16">
+      <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 lg:gap-16">
+        <div class="text-left">
+          <BrandLogo hero />
+          <h1 class="mt-6 font-display text-4xl font-semibold text-ink sm:text-5xl">
+            Lash Extensions in {site.area}
+          </h1>
+          <p class="mt-4 text-lg text-muted">{site.tagline}</p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <BookNowButton />
+            <a
+              href="/services"
+              class="inline-flex min-h-11 items-center justify-center rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white"
+            >
+              See Services
+            </a>
+          </div>
+          <a href={telHref} class="mt-5 inline-block text-sm font-medium text-primary underline decoration-primary/40 underline-offset-4">
+            {site.phone}
+          </a>
+        </div>
+        <div class="overflow-hidden rounded-[2rem] border-4 border-canvas bg-surface shadow-xl shadow-primary/15">
+          <Image
+            src={gallery05}
+            alt="Close-up of a finished set of Sunny's full lash extensions"
+            width={560}
+            height={560}
+            sizes="(min-width: 1152px) 520px, (min-width: 768px) 46vw, 100vw"
+            loading="eager"
+            fetchpriority="high"
+            class="aspect-square h-auto w-full object-cover"
+          />
+        </div>
       </div>
     </section>
 

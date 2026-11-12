@@ -238,7 +238,7 @@ export const site: SiteConfig = {
       display: "Fraunces",
       body: "Inter",
     },
-    logoPath: "", // no logo yet — render a text wordmark
+    logoPath: "", // BrandLogo.astro imports the logo for Astro image optimization.
   },
 };
 

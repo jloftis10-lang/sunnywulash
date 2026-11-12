@@ -292,14 +292,14 @@ export const site: SiteConfig = {
     // src/styles/global.css for the full token set and contrast notes —
     // every pairing used for text is checked against WCAG AA.
     colors: {
-      primary: "#9b0f9b",
-      primaryDark: "#6b0a6b",
-      ink: "#2a1a3d",
-      surface: "#ede4f7",
+      primary: "#784d91",
+      primaryDark: "#55316b",
+      ink: "#3e284b",
+      surface: "#f6effb",
     },
     fonts: {
-      display: "Fraunces",
-      body: "Inter",
+      display: "Nunito",
+      body: "Nunito",
     },
     logoPath: "", // BrandLogo.astro imports the logo for Astro image optimization.
   },

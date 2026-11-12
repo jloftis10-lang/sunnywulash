@@ -10,15 +10,15 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-line bg-canvas/95 backdrop-blur">
-  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+<header class="site-header sticky top-0 z-40">
+  <div class="header-inner flex items-center justify-between gap-4">
     <a href="/" class="shrink-0">
       <BrandLogo />
     </a>
 
-    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-2 md:flex" aria-label="Primary">
       {navLinks.map((link) => (
-        <a href={link.href} class="text-sm font-medium text-ink hover:text-primary">
+        <a href={link.href} class="nav-link text-sm text-ink" aria-current={Astro.url.pathname === link.href ? "page" : undefined}>
           {link.label}
         </a>
       ))}
@@ -31,7 +31,7 @@ const navLinks = [
       same pattern as the FAQ accordion on /policies. The marker is hidden
       and a custom chevron substituted purely for visual consistency.
     -->
-    <details class="md:hidden">
+    <details class="mobile-menu md:hidden">
       <summary
         aria-label="Menu"
         class="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center marker:content-none [&::-webkit-details-marker]:hidden"

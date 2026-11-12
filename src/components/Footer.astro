@@ -13,7 +13,7 @@ const socialLinks = [
 ].filter((item) => item.url);
 ---
 
-<footer class="border-t border-line bg-surface">
+<footer class="site-footer">
   <div class="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6 py-10 text-center">
     <a href="/" class="inline-block"><BrandLogo /></a>
 
@@ -24,7 +24,7 @@ const socialLinks = [
           target="_blank"
           rel="noopener noreferrer"
           aria-label={item.label}
-          class="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line text-ink hover:border-primary hover:text-primary"
+          class="social-link flex min-h-11 min-w-11 items-center justify-center rounded-full border border-line text-ink hover:border-primary hover:text-primary"
         >
           {item.key === "instagram" && (
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">

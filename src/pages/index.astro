@@ -81,28 +81,20 @@ const structuredData = {
 
   <main>
     <!-- Hero -->
-    <section class="home-hero px-6 py-10 sm:py-16">
-      <div class="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 lg:gap-16">
-        <div class="text-left">
+    <section class="home-hero px-6">
+      <div class="hero-layout">
+        <div class="hero-copy">
           <BrandLogo hero />
-          <h1 class="mt-6 font-display text-4xl font-semibold text-ink sm:text-5xl">
-            Lash Extensions in {site.area}
-          </h1>
-          <p class="mt-4 text-lg text-muted">{site.tagline}</p>
-          <div class="mt-8 flex flex-wrap items-center gap-4">
+          <p class="hero-location">Lash extensions in {site.area}</p>
+          <h1 class="mt-3 font-display">Lashes made <span>for you.</span></h1>
+          <p class="hero-description">Find your lash look with Sunny. From soft and natural to full and fluttery, every set is customized to your eyes.</p>
+          <div class="hero-actions">
             <BookNowButton />
-            <a
-              href="/services"
-              class="inline-flex min-h-11 items-center justify-center rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white"
-            >
-              See Services
-            </a>
+            <a href="/services" class="pill-link">Explore Services</a>
           </div>
-          <a href={telHref} class="mt-5 inline-block text-sm font-medium text-primary underline decoration-primary/40 underline-offset-4">
-            {site.phone}
-          </a>
+          <a href={telHref} class="hero-phone">Call {site.phone}</a>
         </div>
-        <div class="relative mx-auto aspect-square w-full max-w-md">
+        <div class="hero-collage relative mx-auto aspect-square w-full max-w-md">
           <div class="absolute left-0 top-2 z-10 w-[54%] -rotate-6 overflow-hidden rounded-2xl border-4 border-canvas bg-surface shadow-lg shadow-primary/10 sm:top-4">
             <Image
               src={gallery01}
@@ -142,17 +134,17 @@ const structuredData = {
     <!-- Services teaser -->
     <section class="home-services border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-3xl text-ink">What I Offer</h2>
+        <h2 class="section-title font-display text-3xl text-ink">Find your lash look</h2>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
           {offerCategories.map((category) => (
-            <span class="rounded-full border border-line bg-canvas px-4 py-2 text-sm font-medium text-ink">
+            <a href="/services" class="service-chip text-sm">
               {category}
-            </span>
+            </a>
           ))}
         </div>
         <a
           href="/services"
-          class="mt-8 inline-flex text-sm font-semibold text-primary hover:text-primary-dark"
+          class="text-link mt-8 inline-flex text-sm text-primary hover:text-primary-dark"
         >
           See Full Services &amp; Pricing →
         </a>
@@ -162,10 +154,10 @@ const structuredData = {
     <!-- Gallery preview -->
     <section class="home-gallery px-6 py-16 sm:py-20">
       <div class="mx-auto max-w-4xl">
-        <h2 class="text-center font-display text-3xl text-ink">Recent Work</h2>
+        <h2 class="section-title text-center font-display text-3xl text-ink">Fresh sets, happy eyes</h2>
         <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {galleryPreview.map((item, index) => (
-            <div class="aspect-square overflow-hidden rounded-xl bg-surface">
+            <div class="photo-card aspect-square">
               <Image
                 src={item.src}
                 alt={item.alt}
@@ -178,7 +170,7 @@ const structuredData = {
           ))}
         </div>
         <div class="mt-8 text-center">
-          <a href="/gallery" class="text-sm font-semibold text-primary hover:text-primary-dark">
+          <a href="/gallery" class="text-link text-sm text-primary hover:text-primary-dark">
             View Full Gallery →
           </a>
         </div>
@@ -188,7 +180,7 @@ const structuredData = {
     <!-- About teaser -->
     <section class="home-about border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto flex max-w-xl flex-col items-center gap-5 text-center">
-        <div class="h-28 w-28 overflow-hidden rounded-full bg-canvas">
+        <div class="about-photo h-32 w-32 overflow-hidden rounded-full bg-canvas">
           <Image
             src={aboutPhoto}
             alt={`${site.about.ownerName}, owner of ${site.name}`}
@@ -198,9 +190,9 @@ const structuredData = {
             class="h-full w-full object-cover"
           />
         </div>
-        <h2 class="font-display text-3xl text-ink">Meet {site.about.ownerName}</h2>
+        <h2 class="section-title font-display text-3xl text-ink">Meet {site.about.ownerName}</h2>
         <p class="text-sm leading-7 text-muted">{site.tagline}</p>
-        <a href="/about" class="text-sm font-semibold text-primary hover:text-primary-dark">
+        <a href="/about" class="text-link text-sm text-primary hover:text-primary-dark">
           Learn More About {site.about.ownerName} →
         </a>
       </div>
@@ -210,10 +202,10 @@ const structuredData = {
     {site.reviews.length > 0 && (
       <section class="home-reviews px-6 py-16 sm:py-20">
         <div class="mx-auto max-w-5xl">
-          <h2 class="text-center font-display text-3xl text-ink">What Clients Say</h2>
+          <h2 class="section-title text-center font-display text-3xl text-ink">A little love from clients</h2>
           <div class="mt-10 grid gap-6 sm:grid-cols-3">
             {site.reviews.map((review) => (
-              <figure class="rounded-2xl border border-line bg-canvas p-6">
+              <figure class="review-card bg-canvas p-6">
                 <blockquote class="text-sm leading-6 text-ink">
                   &ldquo;{review.text}&rdquo;
                 </blockquote>
@@ -230,7 +222,7 @@ const structuredData = {
     <!-- Visit -->
     <section class="home-visit border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-display text-3xl text-ink">Visit the Studio</h2>
+        <h2 class="section-title font-display text-3xl text-ink">Your next lash appointment</h2>
 
         {site.address && (
           <p class="mt-4 text-sm leading-7 text-muted">

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../assets/sunnywu-logo.png";
+import logo from "../assets/sunnywu-hero-logo.png";
 import { site } from "../data/site";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { hero = false } = Astro.props;
-const logoWidth = 528;
+const logoWidth = hero ? 608 : 288;
 const logoHeight = Math.round(logoWidth * logo.height / logo.width);
 ---
 
@@ -18,5 +18,5 @@ const logoHeight = Math.round(logoWidth * logo.height / logo.width);
   width={logoWidth}
   height={logoHeight}
   loading="eager"
-  class={hero ? "h-auto w-full max-w-sm rounded-2xl" : "h-auto w-40 sm:w-44"}
+  class:list={["brand-logo", { "brand-logo--hero": hero }]}
 />

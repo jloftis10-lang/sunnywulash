@@ -1,103 +1,109 @@
 @import "tailwindcss";
 
-/* Light and dark purple, per the client's request. The primary accent is
-   tuned toward the vivid neon-magenta purple from the storefront photo she
-   shared — see --color-neon below. All text-color pairings are checked
-   against WCAG AA's 4.5:1 body-text contrast on canvas/surface — see the
-   contrast notes next to each token. */
 @theme {
-  --color-canvas: #f9f6fd;
-  --color-surface: #ede4f7;
-  --color-line: #d9c8ec;
-  /* 14.9:1 on canvas, 13.0:1 on surface */
-  --color-ink: #2a1a3d;
-  /* 7.3:1 on canvas, 6.3:1 on surface */
-  --color-muted: #5e4a72;
-  /* 6.7:1 on canvas, 5.7:1 on surface, 7.2:1 against white button text */
-  --color-primary: #9b0f9b;
-  /* 10.4:1 on canvas — hover/darker state */
-  --color-primary-dark: #6b0a6b;
-  --color-lilac: #e4d6f5;
-  --color-periwinkle: #ded6f5;
-  --color-plum: #241634;
-  /* The actual neon sign color (#f119f1) — decorative use only (glows,
-     shadows); too light for AA text contrast, see --color-primary above. */
-  --color-neon: #f119f1;
-
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-canvas: #ffffff;
+  --color-surface: #f6effb;
+  --color-line: #e1ccec;
+  --color-ink: #3e284b;
+  --color-muted: #67546f;
+  --color-primary: #784d91;
+  --color-primary-dark: #55316b;
+  --color-lavender: #ead7f5;
+  --color-periwinkle: #eee5fa;
+  --color-coral: #ff7c6b;
+  --color-peach: #fff0e9;
+  --font-display: "Nunito", ui-rounded, system-ui, sans-serif;
+  --font-body: "Nunito", ui-rounded, system-ui, sans-serif;
 }
 
-body {
-  background-color: var(--color-canvas);
-  color: var(--color-ink);
+html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
+body { background: var(--color-canvas); color: var(--color-ink); }
+h1, h2, h3 { font-weight: 900; letter-spacing: -0.035em; line-height: 1.15; text-wrap: balance; }
+::selection { background: var(--color-lavender); color: var(--color-primary-dark); }
+a, summary, button { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, summary:focus-visible, button:focus-visible {
+  outline: 3px solid var(--color-primary); outline-offset: 5px;
 }
 
-::selection {
-  background: var(--color-primary);
-  color: #fff;
-}
+.brand-logo { display: block; height: auto; width: 8rem; border-radius: 1rem; }
+.brand-logo--hero { width: 100%; max-width: 19rem; margin-bottom: 1.25rem; }
+.site-header { background: #ffffffed; border-bottom: 2px solid var(--color-lavender); backdrop-filter: blur(14px); }
+.header-inner { position: relative; max-width: 76rem; margin: auto; padding: .35rem 1.5rem; }
+.nav-link { border-radius: 999px; padding: .65rem .85rem; font-weight: 800; }
+.nav-link:hover, .nav-link[aria-current="page"] { background: var(--color-surface); color: var(--color-primary); }
+.mobile-menu summary { border: 2px solid var(--color-line); border-radius: 50%; color: var(--color-primary); }
+.mobile-menu[open] summary { background: var(--color-lavender); }
+.mobile-menu nav { position: absolute; inset: calc(100% + 2px) 1rem auto; padding: 1rem; border: 2px solid var(--color-line); border-radius: 1.5rem; background: white; box-shadow: 0 12px 28px #55316b18; }
 
-a:focus-visible,
-summary:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 5px;
-}
+.book-button { border: 2px solid var(--color-primary-dark); font-weight: 900; box-shadow: 4px 4px 0 var(--color-coral); transition: transform .18s, box-shadow .18s, background .18s; }
+.book-button:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--color-coral); }
+.book-button:active { transform: translate(4px, 4px); box-shadow: none; }
+.pill-link { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; padding: .75rem 1.5rem; border: 2px solid var(--color-primary); border-radius: 999px; color: var(--color-primary-dark); font-size: .95rem; font-weight: 900; background: white; transition: background .18s; }
+.pill-link:hover { background: var(--color-lavender); }
+.text-link { font-weight: 900; text-decoration: underline; text-decoration-color: var(--color-coral); text-decoration-thickness: 3px; text-underline-offset: 7px; }
 
-.home-hero {
-  max-width: none;
-  background: var(--color-lilac);
-  border-bottom: 1px solid var(--color-line);
-}
+.home-hero { position: relative; isolation: isolate; overflow: hidden; padding-block: 2rem 4rem; background: white; }
+.home-hero::before { content: ""; position: absolute; z-index: -1; width: 39rem; height: 34rem; right: -8rem; top: 1rem; background: var(--color-lavender); border-radius: 48% 52% 44% 56%; transform: rotate(-12deg); }
+.hero-layout { max-width: 72rem; margin: auto; display: grid; align-items: center; gap: 3rem; }
+.hero-copy { min-width: 0; }
+.hero-location { color: var(--color-primary); font-size: .85rem; font-weight: 900; letter-spacing: .045em; }
+.home-hero h1 { max-width: 10ch; font-size: clamp(2.8rem, 5.4vw, 4.8rem); color: var(--color-primary-dark); }
+.home-hero h1 span { display: block; color: #bb4639; }
+.hero-description { max-width: 31rem; margin-top: 1.15rem; font-size: 1.1rem; line-height: 1.8; color: var(--color-muted); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-top: 1.75rem; }
+.hero-phone { display: inline-block; margin-top: 1.5rem; color: var(--color-primary); font-weight: 800; }
+.hero-collage { filter: drop-shadow(8px 10px 0 #ff7c6b38); }
+.home-services, .home-about, .home-reviews, .home-visit { border: 0; }
+.home-services { background: var(--color-surface); border-radius: 3rem 3rem 0 0; }
+.section-title::after { content: ""; display: block; width: 3.5rem; height: .35rem; margin: 1rem auto 0; border-radius: 999px; background: var(--color-coral); transform: rotate(-4deg); }
+.service-chip { display: inline-flex; align-items: center; min-height: 3rem; padding: .8rem 1.2rem; background: white; border: 2px solid var(--color-line); border-radius: 1.2rem .6rem 1.2rem .6rem; color: var(--color-primary-dark); font-weight: 800; }
+.service-chip:nth-child(even) { background: var(--color-peach); border-color: #ffd1c7; }
+.home-gallery { padding-bottom: 5rem; }
+.photo-card { overflow: hidden; border: .4rem solid white; border-radius: 1.5rem; background: var(--color-surface); box-shadow: 5px 6px 0 var(--color-lavender); }
+.photo-card:nth-child(even) { box-shadow: 5px 6px 0 #ffd1c7; }
+.home-gallery .photo-card:nth-child(odd) { transform: rotate(-2deg); }
+.home-gallery .photo-card:nth-child(even) { transform: rotate(2deg); }
+.home-about { background: var(--color-peach); border-radius: 3rem 3rem 0 0; }
+.about-photo { border: 5px solid white; box-shadow: 5px 5px 0 var(--color-coral); }
+.home-reviews { background: var(--color-surface); }
+.review-card { border: 2px solid var(--color-line); border-radius: 2rem 2rem 2rem .5rem; box-shadow: 5px 5px 0 var(--color-lavender); }
+.review-card:nth-child(2) { border-color: #ffd1c7; box-shadow: 5px 5px 0 #ffd1c7; }
+.home-visit { position: relative; background: var(--color-lavender); border-radius: 3rem 3rem 0 0; }
+.home-visit h2 { color: var(--color-primary-dark); }
+.home-visit a { background: white; border: 2px solid var(--color-primary); color: var(--color-primary-dark); font-weight: 900; }
+.home-visit a:hover { background: var(--color-peach); color: var(--color-primary-dark); }
+.home-visit ul { max-width: 24rem; margin-inline: auto; padding: 1.25rem; border-radius: 1.5rem; background: #ffffff8c; }
+.site-footer { border: 0; background: white; }
+.site-footer .brand-logo { width: 12rem; }
+.social-link { background: var(--color-surface); border: 2px solid var(--color-line); }
+.social-link:hover { background: var(--color-peach); border-color: var(--color-coral); }
+.sticky-book-bar { padding-bottom: max(.9rem, env(safe-area-inset-bottom)); background: #ffffffef; border-top: 2px solid var(--color-lavender); }
 
-.home-hero h1 {
-  max-width: 19ch;
-  margin-inline: 0;
-  color: var(--color-primary-dark);
-  line-height: 1.12;
-}
+.page-shell { min-height: 55vh; }
+.page-shell > h1 { color: var(--color-primary-dark); }
+.page-shell > h1::after { content: ""; display: block; width: 4rem; height: .4rem; margin: 1rem auto 0; border-radius: 999px; background: var(--color-coral); }
+.service-card { border: 2px solid var(--color-line); border-radius: 2rem 2rem 2rem .65rem; background: var(--color-surface); box-shadow: 5px 5px 0 var(--color-lavender); }
+.service-card:nth-child(even) { background: var(--color-peach); border-color: #ffd1c7; box-shadow: 5px 5px 0 #ffd1c7; }
+.about-portrait { border: 7px solid white; border-radius: 45% 45% 2rem 2rem; box-shadow: 8px 8px 0 var(--color-lavender); }
+.policy-page section { padding: 1.5rem; border: 2px solid var(--color-line); border-radius: 1.75rem; background: var(--color-surface); }
+.policy-page section:nth-of-type(even) { background: var(--color-peach); border-color: #ffd1c7; }
+.policy-page summary { padding-right: 1.5rem; }
 
-.home-hero p {
-  max-width: 38rem;
-  margin-inline: auto;
+@media (min-width: 768px) {
+  .hero-layout { grid-template-columns: 1.05fr 1fr; }
+  .home-hero { padding-block: 2rem 5rem; }
+  .brand-logo { width: 8.5rem; }
+  .brand-logo--hero { width: 100%; max-width: 19rem; }
 }
-
-.home-services {
-  background: var(--color-surface);
+@media (max-width: 767px) {
+  .home-hero::before { width: 28rem; height: 28rem; top: auto; bottom: -5rem; right: -9rem; }
+  .brand-logo--hero { max-width: 15rem; }
+  .hero-collage { max-width: 27rem; justify-self: center; }
+  .home-services, .home-about, .home-visit { border-radius: 2rem 2rem 0 0; }
+  .home-gallery .photo-card { transform: none; }
 }
-
-.home-about {
-  background: var(--color-periwinkle);
-}
-
-.home-reviews {
-  background: var(--color-lilac);
-}
-
-.home-visit {
-  background: var(--color-plum);
-  border-color: var(--color-plum);
-}
-
-.home-visit .text-ink {
-  color: #fff;
-}
-
-.home-visit .text-muted {
-  color: #e4d6f5;
-}
-
-.home-visit a {
-  color: #fff;
-  border-color: #6b5480;
-}
-
-.home-visit a:hover {
-  background: var(--color-lilac);
-  color: var(--color-ink);
-  border-color: var(--color-lilac);
-}
-
-.home-visit a:focus-visible {
-  outline-color: var(--color-lilac);
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .book-button { transition: none; }
+  .book-button:hover, .book-button:active { transform: none; }
 }

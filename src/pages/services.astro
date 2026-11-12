@@ -16,14 +16,14 @@ const addOns = site.services.filter((service) => !service.refill);
 >
   <Header />
 
-  <main class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+  <main class="page-shell mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <h1 class="text-center font-display text-4xl text-ink">Services &amp; Pricing</h1>
     <p class="mt-3 text-center text-sm text-muted">{site.tagline}</p>
 
     <h2 class="mt-14 font-display text-2xl text-ink">Lash Extensions</h2>
     <div class="mt-6 grid gap-6 sm:grid-cols-2">
       {lashExtensions.map((service) => (
-        <div class="rounded-2xl border border-line bg-surface p-6">
+        <div class="service-card p-6 sm:p-8">
           <h3 class="font-display text-xl text-ink">{service.name}</h3>
           <p class="mt-2 text-sm leading-6 text-muted">{service.description}</p>
           <div class="mt-4 flex items-center justify-between text-sm font-semibold text-ink">
@@ -53,7 +53,7 @@ const addOns = site.services.filter((service) => !service.refill);
     <h2 class="mt-14 font-display text-2xl text-ink">Lash &amp; Brow Add-Ons</h2>
     <div class="mt-6 grid gap-6 sm:grid-cols-2">
       {addOns.map((service) => (
-        <div class="rounded-2xl border border-line bg-surface p-6">
+        <div class="service-card p-6 sm:p-8">
           <h3 class="font-display text-xl text-ink">{service.name}</h3>
           <p class="mt-2 text-sm leading-6 text-muted">{service.description}</p>
           <div class="mt-4 flex items-center justify-between text-sm font-semibold text-ink">

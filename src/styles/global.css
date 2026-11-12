@@ -1,26 +1,24 @@
 @import "tailwindcss";
 
-/* Gold and blush, matching the client's chosen logo (antique-gold script on
-   a soft blush-pink mark). All text-color pairings below are checked
-   against WCAG AA's 4.5:1 body-text contrast on canvas/surface — see the
-   contrast notes next to each token. */
+/* Light and dark purple, per the client's request — paired with the gold
+   logo. All text-color pairings below are checked against WCAG AA's
+   4.5:1 body-text contrast on canvas/surface — see the contrast notes
+   next to each token. */
 @theme {
-  --color-canvas: #fdf6f3;
-  --color-surface: #f6e6e1;
-  --color-line: #e0cac2;
-  /* 15.3:1 on canvas, 13.5:1 on surface */
-  --color-ink: #2e1b17;
-  /* 6.4:1 on canvas, 5.6:1 on surface */
-  --color-muted: #6e564b;
-  /* 6.8:1 on canvas, 6.0:1 on surface, 7.2:1 against white button text */
-  --color-primary: #7a4d20;
-  /* 10.3:1 on canvas — hover/darker state */
-  --color-primary-dark: #573410;
-  --color-blush: #f3dad2;
-  --color-champagne: #ead9c7;
-  --color-espresso: #2e1b17;
-  /* 5.3:1 on canvas — decorative rose accent, matches the logo's "Lash" text */
-  --color-rose: #a84941;
+  --color-canvas: #f9f6fd;
+  --color-surface: #ede4f7;
+  --color-line: #d9c8ec;
+  /* 14.9:1 on canvas, 13.0:1 on surface */
+  --color-ink: #2a1a3d;
+  /* 7.3:1 on canvas, 6.3:1 on surface */
+  --color-muted: #5e4a72;
+  /* 6.9:1 on canvas, 6.0:1 on surface, 7.4:1 against white button text */
+  --color-primary: #6b3fa0;
+  /* 10.5:1 on canvas — hover/darker state */
+  --color-primary-dark: #4a2a73;
+  --color-lilac: #e4d6f5;
+  --color-periwinkle: #ded6f5;
+  --color-plum: #241634;
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -44,7 +42,7 @@ summary:focus-visible {
 
 .home-hero {
   max-width: none;
-  background: var(--color-blush);
+  background: var(--color-lilac);
   border-bottom: 1px solid var(--color-line);
 }
 
@@ -65,16 +63,16 @@ summary:focus-visible {
 }
 
 .home-about {
-  background: var(--color-champagne);
+  background: var(--color-periwinkle);
 }
 
 .home-reviews {
-  background: var(--color-blush);
+  background: var(--color-lilac);
 }
 
 .home-visit {
-  background: var(--color-espresso);
-  border-color: var(--color-espresso);
+  background: var(--color-plum);
+  border-color: var(--color-plum);
 }
 
 .home-visit .text-ink {
@@ -82,20 +80,20 @@ summary:focus-visible {
 }
 
 .home-visit .text-muted {
-  color: #e8d7cc;
+  color: #e4d6f5;
 }
 
 .home-visit a {
   color: #fff;
-  border-color: #8a6a52;
+  border-color: #6b5480;
 }
 
 .home-visit a:hover {
-  background: var(--color-blush);
+  background: var(--color-lilac);
   color: var(--color-ink);
-  border-color: var(--color-blush);
+  border-color: var(--color-lilac);
 }
 
 .home-visit a:focus-visible {
-  outline-color: var(--color-blush);
+  outline-color: var(--color-lilac);
 }

@@ -274,14 +274,14 @@ export const site: SiteConfig = {
     training: "Completed formal lash extension training through SmarterU.",
   },
   brand: {
-    // Gold and blush, matching the client's chosen logo. See
+    // Light and dark purple, per the client's request. See
     // src/styles/global.css for the full token set and contrast notes —
     // every pairing used for text is checked against WCAG AA.
     colors: {
-      primary: "#7a4d20",
-      primaryDark: "#573410",
-      ink: "#2e1b17",
-      surface: "#f6e6e1",
+      primary: "#6b3fa0",
+      primaryDark: "#4a2a73",
+      ink: "#2a1a3d",
+      surface: "#ede4f7",
     },
     fonts: {
       display: "Fraunces",

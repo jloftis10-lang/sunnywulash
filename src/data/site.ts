@@ -264,12 +264,9 @@ export const site: SiteConfig = {
   about: {
     // Real, from the client's own Yelp business-owner listing.
     ownerName: "Sunny W.",
-    // Yelp's "About the Business" field is truncated mid-sentence
-    // ("Always master stylist; unique technique; custom design; best
-    // quality…") — using a cut-off fragment as site copy would read as
-    // broken, so this stays a TODO until the client sends the full bio
-    // rather than guessing how it ends.
-    bio: "TODO: full bio from client",
+    // Real, the client's own full bio sent directly (supersedes Yelp's
+    // truncated "About the Business" fragment).
+    bio: "I'm a skilled, experienced, professional master lash artist. Every set is customized to your natural lashes — their length, density, thickness, and your personal preferences — to create a beautiful, personalized American-style lash look that is uniquely yours. My commitment to premium products, professional application, cleanliness, and consistent results has earned the trust, love, and recognition of many clients. I work independently out of my home studio.",
     training: "TODO: training/certifications",
   },
   brand: {

@@ -184,37 +184,44 @@ export const site: SiteConfig = {
       name: "Lash Lift",
       description: "Lifts and curls your natural lashes without extensions.",
       price: "$85",
-      duration: "TODO: duration",
+      duration: "1h",
     },
     {
       name: "Lash Tint",
       description: "Deepens the color of your natural lashes.",
       price: "$25",
-      duration: "TODO: duration",
+      // The client's texted list gave "Eyebrows tint" twice at 10m each
+      // rather than listing lash tint separately — applying the repeated
+      // value here since both tint services are otherwise the same quick
+      // service. Flagged to the client to confirm.
+      duration: "10m",
     },
     {
       name: "Eyebrow Tint",
       description: "Deepens and defines your natural brow color.",
       price: "$25",
-      duration: "TODO: duration",
+      duration: "10m",
     },
     {
       name: "Eyebrow Lamination",
       description: "Sets brow hairs in a fuller, more uniform shape.",
       price: "$75",
-      duration: "TODO: duration",
+      duration: "1h",
     },
     {
       name: "Eyebrow Threading",
       description: "Precise brow shaping using the threading technique.",
       price: "$10",
-      duration: "TODO: duration",
+      duration: "5m",
     },
     {
       name: "Eyelash Extension Removal",
       description: "Safe removal of existing lash extensions.",
       price: "$25",
-      duration: "TODO: duration",
+      // The client's list had both "Eyebrows removal" and "Eyelashes
+      // removal" at 15m — applying it here since this is the only
+      // removal service in the catalog. Flagged to the client to confirm.
+      duration: "15m",
     },
   ],
   policies: {

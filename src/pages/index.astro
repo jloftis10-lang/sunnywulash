@@ -102,17 +102,39 @@ const structuredData = {
             {site.phone}
           </a>
         </div>
-        <div class="overflow-hidden rounded-[2rem] border-4 border-canvas bg-surface shadow-xl shadow-primary/15">
-          <Image
-            src={gallery05}
-            alt="Close-up of a finished set of Sunny's full lash extensions"
-            width={560}
-            height={560}
-            sizes="(min-width: 1152px) 520px, (min-width: 768px) 46vw, 100vw"
-            loading="eager"
-            fetchpriority="high"
-            class="aspect-square h-auto w-full object-cover"
-          />
+        <div class="relative mx-auto aspect-square w-full max-w-md">
+          <div class="absolute left-0 top-2 z-10 w-[54%] -rotate-6 overflow-hidden rounded-2xl border-4 border-canvas bg-surface shadow-lg shadow-primary/10 sm:top-4">
+            <Image
+              src={gallery01}
+              alt="Numbered lash-length mapping chart applied across the lash line before applying volume lash extensions"
+              width={320}
+              height={320}
+              loading="eager"
+              class="aspect-square h-auto w-full object-cover"
+            />
+          </div>
+          <div class="absolute bottom-2 right-0 z-20 w-[50%] rotate-6 overflow-hidden rounded-2xl border-4 border-canvas bg-surface shadow-lg shadow-primary/10 sm:bottom-4">
+            <Image
+              src={gallery02}
+              alt="Close-up comparison of natural lashes before and after a full set of volume lash extensions"
+              width={300}
+              height={300}
+              loading="eager"
+              class="aspect-square h-auto w-full object-cover"
+            />
+          </div>
+          <div class="absolute left-1/2 top-1/2 z-30 w-[68%] -translate-x-1/2 -translate-y-1/2 -rotate-2 overflow-hidden rounded-[2rem] border-4 border-canvas bg-surface shadow-xl shadow-primary/20">
+            <Image
+              src={gallery05}
+              alt="Close-up of a finished set of Sunny's full lash extensions"
+              width={420}
+              height={420}
+              sizes="(min-width: 1152px) 360px, (min-width: 768px) 32vw, 68vw"
+              loading="eager"
+              fetchpriority="high"
+              class="aspect-square h-auto w-full object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>

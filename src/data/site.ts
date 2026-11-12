@@ -121,14 +121,11 @@ export const site: SiteConfig = {
     { day: "Saturday", ...allDaysOpen },
     { day: "Sunday", ...allDaysOpen },
   ],
-  // Real street address (confirmed via Yelp listing) — this is a studio
-  // location, not a home studio, so we show the address, not a vague area.
-  address: {
-    street: "1550 Grandon Ave",
-    city: "San Marcos",
-    state: "CA",
-    zip: "92078",
-  },
+  // Confirmed with the client: this is a home studio, not a commercial
+  // address. The street address that was on Yelp must never be shown on
+  // the site — per the master prompt's own rule, a home studio shows an
+  // area only. Do not re-add a street/city/zip here.
+  serviceArea: "San Marcos, CA",
   social: {
     instagram: "https://www.instagram.com/sunnywulash/",
     facebook: "https://www.facebook.com/Sunnywulash/",

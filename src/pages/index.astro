@@ -24,10 +24,8 @@ const galleryPreview = [
 
 const telHref = `tel:+1${site.phone.replace(/\D/g, "")}`;
 const smsHref = `sms:+1${site.phone.replace(/\D/g, "")}`;
-const fullAddress = site.address
-  ? `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`
-  : "";
-const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+// Home studio — no street address exists to map to, and a "Get Directions"
+// link must never be derived from one. See site.ts's serviceArea comment.
 
 // Share-preview image: no dedicated logo or hero photo exists yet, so this
 // uses a real, representative gallery photo rather than a placeholder.
@@ -218,9 +216,6 @@ const structuredData = {
           </a>
           <a href={`mailto:${site.email}`} class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
             Email
-          </a>
-          <a href={mapsHref} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
-            Get Directions
           </a>
         </div>
       </div>

@@ -229,13 +229,19 @@ export const site: SiteConfig = {
     deposit: "A 15% deposit is required to book.",
     // Real, from the client's exact words.
     cancellation: "Cancellations require at least 24 hours' notice. A $25 fee applies to cancellations made with less notice, though exceptions may be made for special circumstances.",
-    lateArrival: "TODO: late arrival policy",
+    // Left empty on purpose — the client chose not to provide a late
+    // arrival policy. Policies page hides this line when empty, same as
+    // prep/aftercare below.
+    lateArrival: "",
     // Real, inferred directly from the fact that both 2-week and 3-week
     // refill prices are published — not an invented policy.
     fillTiming: "Refills are available at either 2 or 3 weeks — see Services for pricing at each interval.",
   },
-  prep: ["TODO: prep steps"],
-  aftercare: ["TODO: aftercare steps"],
+  // Left empty on purpose — no real prep/aftercare content has been
+  // provided yet. Policies page hides each section when empty, same as
+  // the FAQ accordion and reviews section.
+  prep: [],
+  aftercare: [],
   // Left empty on purpose — no real FAQ content has been provided yet.
   // The Policies & Aftercare page hides the FAQ accordion when this is
   // empty, same as the reviews section, rather than show placeholder Q&As.

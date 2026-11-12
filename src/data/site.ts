@@ -273,14 +273,14 @@ export const site: SiteConfig = {
     training: "TODO: training/certifications",
   },
   brand: {
-    // Light purple / lavender, per the client's stated preference. See
+    // Gold and blush, matching the client's chosen logo. See
     // src/styles/global.css for the full token set and contrast notes —
     // every pairing used for text is checked against WCAG AA.
     colors: {
-      primary: "#55418c",
-      primaryDark: "#3e2d6c",
-      ink: "#302547",
-      surface: "#f0e7f7",
+      primary: "#7a4d20",
+      primaryDark: "#573410",
+      ink: "#2e1b17",
+      surface: "#f6e6e1",
     },
     fonts: {
       display: "Fraunces",

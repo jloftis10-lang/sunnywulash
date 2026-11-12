@@ -1,17 +1,26 @@
 @import "tailwindcss";
 
-/* Lavender and periwinkle with deep violet accents, inspired by Sunny's card. */
+/* Gold and blush, matching the client's chosen logo (antique-gold script on
+   a soft blush-pink mark). All text-color pairings below are checked
+   against WCAG AA's 4.5:1 body-text contrast on canvas/surface — see the
+   contrast notes next to each token. */
 @theme {
-  --color-canvas: #fffaf7;
-  --color-surface: #f0e7f7;
-  --color-line: #cfc1df;
-  --color-ink: #302547;
-  --color-muted: #605878;
-  --color-primary: #55418c;
-  --color-primary-dark: #3e2d6c;
-  --color-lavender: #e7d7f3;
-  --color-periwinkle: #d8d9f1;
-  --color-night: #302547;
+  --color-canvas: #fdf6f3;
+  --color-surface: #f6e6e1;
+  --color-line: #e0cac2;
+  /* 15.3:1 on canvas, 13.5:1 on surface */
+  --color-ink: #2e1b17;
+  /* 6.4:1 on canvas, 5.6:1 on surface */
+  --color-muted: #6e564b;
+  /* 6.8:1 on canvas, 6.0:1 on surface, 7.2:1 against white button text */
+  --color-primary: #7a4d20;
+  /* 10.3:1 on canvas — hover/darker state */
+  --color-primary-dark: #573410;
+  --color-blush: #f3dad2;
+  --color-champagne: #ead9c7;
+  --color-espresso: #2e1b17;
+  /* 5.3:1 on canvas — decorative rose accent, matches the logo's "Lash" text */
+  --color-rose: #a84941;
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -35,7 +44,7 @@ summary:focus-visible {
 
 .home-hero {
   max-width: none;
-  background: var(--color-lavender);
+  background: var(--color-blush);
   border-bottom: 1px solid var(--color-line);
 }
 
@@ -56,16 +65,16 @@ summary:focus-visible {
 }
 
 .home-about {
-  background: var(--color-periwinkle);
+  background: var(--color-champagne);
 }
 
 .home-reviews {
-  background: var(--color-lavender);
+  background: var(--color-blush);
 }
 
 .home-visit {
-  background: var(--color-night);
-  border-color: var(--color-night);
+  background: var(--color-espresso);
+  border-color: var(--color-espresso);
 }
 
 .home-visit .text-ink {
@@ -73,20 +82,20 @@ summary:focus-visible {
 }
 
 .home-visit .text-muted {
-  color: #e3d9ef;
+  color: #e8d7cc;
 }
 
 .home-visit a {
   color: #fff;
-  border-color: #9d8ab7;
+  border-color: #8a6a52;
 }
 
 .home-visit a:hover {
-  background: var(--color-lavender);
+  background: var(--color-blush);
   color: var(--color-ink);
-  border-color: var(--color-lavender);
+  border-color: var(--color-blush);
 }
 
 .home-visit a:focus-visible {
-  outline-color: var(--color-lavender);
+  outline-color: var(--color-blush);
 }

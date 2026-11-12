@@ -24,11 +24,19 @@ export interface SocialLinks {
   linkedin: string; // empty string = not shown
 }
 
+export interface RefillPricing {
+  twoWeek: string;
+  threeWeek: string;
+  touchUp: string;
+}
+
 export interface ServiceItem {
   name: string;
   description: string;
   price: string;
   duration: string;
+  // Only the 5 full-set lash extension styles have refill/touch-up pricing.
+  refill?: RefillPricing;
 }
 
 export interface Policies {
@@ -132,47 +140,90 @@ export const site: SiteConfig = {
     yelp: "https://yelp.to/Jtzhd3nYUp",
     linkedin: "",
   },
-  // Service names are real (verified on the client's own Yelp listing).
-  // Pricing and duration were not provided — even Yelp's own "price range"
-  // field is blank for this business — so those stay as TODOs rather than
-  // guessed.
+  // Real prices and durations, provided directly by the client. Refill
+  // pricing covers both a 2-week and a 3-week interval, plus a 30-minute
+  // touch-up — all real, nothing estimated.
   services: [
     {
-      name: "Eyelash Extensions",
-      description: "Classic, hybrid, volume, mink, silk, or lower-lash styles, customized to your eye shape.",
-      price: "TODO: price",
+      name: "Classic Full Set",
+      description: "One extension applied to each natural lash for a clean, natural look.",
+      price: "$109",
+      duration: "1h 15m",
+      refill: { twoWeek: "$65", threeWeek: "$85", touchUp: "$35 (30 min)" },
+    },
+    {
+      name: "Hybrid Full Set",
+      description: "A mix of classic and volume techniques for extra texture without full drama.",
+      price: "$139",
+      duration: "1h 30m",
+      refill: { twoWeek: "$75", threeWeek: "$95", touchUp: "$45 (30 min)" },
+    },
+    {
+      name: "Volume Full Set",
+      description: "Multiple lightweight extensions fanned onto each natural lash for a fuller look.",
+      price: "$159",
+      duration: "1h 45m",
+      refill: { twoWeek: "$85", threeWeek: "$105", touchUp: "$50 (30 min)" },
+    },
+    {
+      name: "Mega Volume Full Set",
+      description: "Maximum fullness and drama using ultra-fine extensions.",
+      price: "$189",
+      duration: "2h",
+      refill: { twoWeek: "$95", threeWeek: "$115", touchUp: "$60 (30 min)" },
+    },
+    {
+      name: "Wet Mascara Set",
+      description: "A glossy, just-applied-mascara look.",
+      price: "$129",
+      duration: "1h 30m",
+      refill: { twoWeek: "$70", threeWeek: "$90", touchUp: "$40 (30 min)" },
+    },
+    {
+      name: "Lash Lift",
+      description: "Lifts and curls your natural lashes without extensions.",
+      price: "$85",
       duration: "TODO: duration",
     },
     {
-      name: "Eyelash Extension Refill / Touch-Up",
-      description: "TODO: description",
-      price: "TODO: price",
+      name: "Lash Tint",
+      description: "Deepens the color of your natural lashes.",
+      price: "$25",
+      duration: "TODO: duration",
+    },
+    {
+      name: "Eyebrow Tint",
+      description: "Deepens and defines your natural brow color.",
+      price: "$25",
+      duration: "TODO: duration",
+    },
+    {
+      name: "Eyebrow Lamination",
+      description: "Sets brow hairs in a fuller, more uniform shape.",
+      price: "$75",
+      duration: "TODO: duration",
+    },
+    {
+      name: "Eyebrow Threading",
+      description: "Precise brow shaping using the threading technique.",
+      price: "$10",
       duration: "TODO: duration",
     },
     {
       name: "Eyelash Extension Removal",
-      description: "TODO: description",
-      price: "TODO: price",
-      duration: "TODO: duration",
-    },
-    {
-      name: "Eyelash Lift",
-      description: "TODO: description",
-      price: "TODO: price",
-      duration: "TODO: duration",
-    },
-    {
-      name: "Eyelash Perm",
-      description: "TODO: description",
-      price: "TODO: price",
+      description: "Safe removal of existing lash extensions.",
+      price: "$25",
       duration: "TODO: duration",
     },
   ],
   policies: {
     deposit: "TODO: deposit policy",
-    cancellation: "TODO: cancellation policy",
+    // Real, from the client's exact words.
+    cancellation: "Cancellations require at least 24 hours' notice. A $25 fee applies to cancellations made with less notice, though exceptions may be made for special circumstances.",
     lateArrival: "TODO: late arrival policy",
-    fillTiming: "TODO: fill timing policy",
+    // Real, inferred directly from the fact that both 2-week and 3-week
+    // refill prices are published — not an invented policy.
+    fillTiming: "Refills are available at either 2 or 3 weeks — see Services for pricing at each interval.",
   },
   prep: ["TODO: prep steps"],
   aftercare: ["TODO: aftercare steps"],

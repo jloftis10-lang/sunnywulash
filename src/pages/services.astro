@@ -5,11 +5,14 @@ import Footer from "../components/Footer.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
+
+const lashExtensions = site.services.filter((service) => service.refill);
+const addOns = site.services.filter((service) => !service.refill);
 ---
 
 <Layout
   title={`Services & Pricing | ${site.name}`}
-  description={`Lash extension, lift, perm, and refill services at ${site.name} in ${site.area}.`}
+  description={`Lash extension, lift, tint, and brow services at ${site.name} in ${site.area}.`}
 >
   <Header />
 
@@ -17,10 +20,41 @@ import { site } from "../data/site";
     <h1 class="text-center font-display text-4xl text-ink">Services &amp; Pricing</h1>
     <p class="mt-3 text-center text-sm text-muted">{site.tagline}</p>
 
-    <div class="mt-12 grid gap-6 sm:grid-cols-2">
-      {site.services.map((service) => (
+    <h2 class="mt-14 font-display text-2xl text-ink">Lash Extensions</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      {lashExtensions.map((service) => (
         <div class="rounded-2xl border border-line bg-surface p-6">
-          <h2 class="font-display text-xl text-ink">{service.name}</h2>
+          <h3 class="font-display text-xl text-ink">{service.name}</h3>
+          <p class="mt-2 text-sm leading-6 text-muted">{service.description}</p>
+          <div class="mt-4 flex items-center justify-between text-sm font-semibold text-ink">
+            <span>Full Set — {service.price}</span>
+            <span class="text-muted">{service.duration}</span>
+          </div>
+          {service.refill && (
+            <div class="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-4 text-center text-xs">
+              <div>
+                <p class="font-semibold text-ink">{service.refill.twoWeek}</p>
+                <p class="mt-1 text-muted">Refill · 2 wks</p>
+              </div>
+              <div>
+                <p class="font-semibold text-ink">{service.refill.threeWeek}</p>
+                <p class="mt-1 text-muted">Refill · 3 wks</p>
+              </div>
+              <div>
+                <p class="font-semibold text-ink">{service.refill.touchUp}</p>
+                <p class="mt-1 text-muted">Touch-Up</p>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <h2 class="mt-14 font-display text-2xl text-ink">Lash &amp; Brow Add-Ons</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      {addOns.map((service) => (
+        <div class="rounded-2xl border border-line bg-surface p-6">
+          <h3 class="font-display text-xl text-ink">{service.name}</h3>
           <p class="mt-2 text-sm leading-6 text-muted">{service.description}</p>
           <div class="mt-4 flex items-center justify-between text-sm font-semibold text-ink">
             <span>{service.price}</span>

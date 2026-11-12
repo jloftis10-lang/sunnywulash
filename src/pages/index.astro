@@ -14,6 +14,11 @@ import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
 import gallery08 from "../assets/gallery/sunny-wu-lash-08.png";
 import aboutPhoto from "../assets/about-sunny.png";
 
+// Category-level labels for the Home teaser — the full 11-item breakdown
+// with real pricing lives on /services. This groups them so Home stays a
+// quick highlight reel, not a repeat of the full list.
+const offerCategories = ["Lash Extensions", "Lash Lift", "Lash & Brow Tinting", "Brow Lamination", "Brow Threading"];
+
 // A short, representative preview strip — the full 8-photo set lives on
 // /gallery so Home stays a quick highlight reel, not a second copy of it.
 const galleryPreview = [
@@ -117,9 +122,9 @@ const structuredData = {
       <div class="mx-auto max-w-3xl text-center">
         <h2 class="font-display text-3xl text-ink">What I Offer</h2>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {site.services.map((service) => (
+          {offerCategories.map((category) => (
             <span class="rounded-full border border-line bg-canvas px-4 py-2 text-sm font-medium text-ink">
-              {service.name}
+              {category}
             </span>
           ))}
         </div>

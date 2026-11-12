@@ -271,7 +271,7 @@ export const site: SiteConfig = {
     // Real, from the client directly.
     experience: "8 years",
     // Real, from the client directly.
-    training: "Sunny also trains other lash artists.",
+    training: "Completed formal lash extension training through SmarterU. Sunny also trains other lash artists.",
   },
   brand: {
     // Gold and blush, matching the client's chosen logo. See

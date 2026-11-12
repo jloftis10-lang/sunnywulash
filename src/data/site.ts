@@ -65,6 +65,7 @@ export interface GalleryImage {
 export interface About {
   ownerName: string;
   bio: string;
+  experience: string;
   training: string;
 }
 
@@ -267,6 +268,8 @@ export const site: SiteConfig = {
     // Real, the client's own full bio sent directly (supersedes Yelp's
     // truncated "About the Business" fragment).
     bio: "I'm a skilled, experienced, professional master lash artist. Every set is customized to your natural lashes — their length, density, thickness, and your personal preferences — to create a beautiful, personalized American-style lash look that is uniquely yours. My commitment to premium products, professional application, cleanliness, and consistent results has earned the trust, love, and recognition of many clients. I work independently out of my home studio.",
+    // Real, from the client directly.
+    experience: "8 years",
     training: "TODO: training/certifications",
   },
   brand: {

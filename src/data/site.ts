@@ -299,6 +299,8 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-20.webp", alt: "Blonde client showing a finished lash set in natural light" },
     { src: "sunny-wu-lash-21.webp", alt: "Profile close-up highlighting the curl and fullness of a lash set" },
     { src: "sunny-wu-lash-22.webp", alt: "Side profile close-up of a dense volume lash set" },
+    { src: "sunny-wu-lash-23.webp", alt: "Lash extensions with purple accents on a blonde client" },
+    { src: "sunny-wu-lash-24.webp", alt: "Close-up of full, curled volume lash extensions on a blue-eyed client" },
   ],
   about: {
     // Real, from the client's own Yelp business-owner listing.

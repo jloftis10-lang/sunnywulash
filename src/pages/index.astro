@@ -10,18 +10,18 @@ import { site } from "../data/site";
 import gallery02 from "../assets/gallery/sunny-wu-lash-02.png";
 import gallery01 from "../assets/gallery/sunny-wu-lash-01.png";
 import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
-import gallery13 from "../assets/gallery/sunny-wu-lash-13.webp";
+import gallery13 from "../assets/gallery/sunny-wu-lash-13.png";
 import gallery14 from "../assets/gallery/sunny-wu-lash-14.webp";
 import gallery16 from "../assets/gallery/sunny-wu-lash-16.webp";
 import gallery21 from "../assets/gallery/sunny-wu-lash-21.webp";
 import aboutPhoto from "../assets/about-sunny.png";
 
-// Category-level labels for the Home teaser — the full 11-item breakdown
+// Category-level labels for the Home teaser - the full 11-item breakdown
 // with real pricing lives on /services. This groups them so Home stays a
 // quick highlight reel, not a repeat of the full list.
 const offerCategories = ["Lash Extensions", "Lash Lift", "Lash & Brow Tinting", "Brow Lamination", "Brow Threading"];
 
-// A short, representative preview strip — the full 8-photo set lives on
+// A short, representative preview strip - the full 8-photo set lives on
 // /gallery so Home stays a quick highlight reel, not a second copy of it.
 const galleryPreview = [
   { src: gallery14, alt: "Blonde client with a finished full lash extension set" },
@@ -32,7 +32,7 @@ const galleryPreview = [
 
 const telHref = `tel:+1${site.phone.replace(/\D/g, "")}`;
 const smsHref = `sms:+1${site.phone.replace(/\D/g, "")}`;
-// Home studio — no street address exists to map to, and a "Get Directions"
+// Home studio - no street address exists to map to, and a "Get Directions"
 // link must never be derived from one. See site.ts's serviceArea comment.
 
 // Use the real lash photo from the hero as the share-preview image.
@@ -147,7 +147,7 @@ const structuredData = {
           href="/services"
           class="text-link mt-8 inline-flex text-sm text-primary hover:text-primary-dark"
         >
-          See Full Services &amp; Pricing →
+          See Full Services &amp; Pricing 
         </a>
       </div>
     </section>
@@ -172,7 +172,7 @@ const structuredData = {
         </div>
         <div class="mt-8 text-center">
           <a href="/gallery" class="text-link text-sm text-primary hover:text-primary-dark">
-            View Full Gallery →
+            View Full Gallery 
           </a>
         </div>
       </div>
@@ -194,7 +194,7 @@ const structuredData = {
         <h2 class="section-title font-display text-3xl text-ink">Meet {site.about.ownerName}</h2>
         <p class="text-sm leading-7 text-muted">{site.tagline}</p>
         <a href="/about" class="text-link text-sm text-primary hover:text-primary-dark">
-          Learn More About {site.about.ownerName} →
+          Learn More About {site.about.ownerName} 
         </a>
       </div>
     </section>
@@ -211,7 +211,7 @@ const structuredData = {
                   &ldquo;{review.text}&rdquo;
                 </blockquote>
                 <figcaption class="mt-4 text-xs font-semibold text-muted">
-                  {review.author} · {review.source}
+                  {review.author} � {review.source}
                 </figcaption>
               </figure>
             ))}
@@ -238,7 +238,7 @@ const structuredData = {
         <ul class="mt-6 space-y-1 text-sm text-muted">
           {site.hours.map((entry) => (
             <li>
-              <span class="font-medium text-ink">{entry.day}:</span> {entry.open} – {entry.close}
+              <span class="font-medium text-ink">{entry.day}:</span> {entry.open} - {entry.close}
             </li>
           ))}
         </ul>
@@ -261,3 +261,4 @@ const structuredData = {
   <Footer />
   <StickyBookBar />
 </Layout>
+

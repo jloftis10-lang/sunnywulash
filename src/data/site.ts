@@ -286,20 +286,16 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-03.png", alt: "Closed eyes with full volume lash extensions and under-eye gel pads during an application" },
     { src: "sunny-wu-lash-04.png", alt: "Finished eye with a numbered lash-mapping chart overlaid showing precise lash placement" },
     { src: "sunny-wu-lash-05.png", alt: "Finished dramatic volume lash extensions with under-eye gel pads still in place" },
-    { src: "sunny-wu-lash-06.png", alt: "Style reference chart showing four different lash extension looks, each labeled in Chinese" },
     { src: "sunny-wu-lash-07.png", alt: "Client relaxing in the studio chair during a lash appointment" },
     { src: "sunny-wu-lash-08.png", alt: "Close-up profile view of finished volume lash extensions" },
     { src: "sunny-wu-lash-09.webp", alt: "Finished lash extensions on a client wearing a black face mask" },
     { src: "sunny-wu-lash-10.webp", alt: "Brunette client showing a soft, full lash extension set" },
     { src: "sunny-wu-lash-11.webp", alt: "Close-up of a clean, curled lash extension set" },
     { src: "sunny-wu-lash-12.webp", alt: "Blonde client showing a dramatic cat-eye lash set outdoors" },
-    { src: "sunny-wu-lash-13.webp", alt: "Creative purple and pink colored lash extensions" },
+    { src: "sunny-wu-lash-13.png", alt: "Creative purple lash extensions on a finished set" },
     { src: "sunny-wu-lash-14.webp", alt: "Blonde client with a finished full lash extension set" },
     { src: "sunny-wu-lash-15.webp", alt: "Blonde client portrait with a full, textured lash set" },
     { src: "sunny-wu-lash-16.webp", alt: "Brown-eyed client with a bold finished lash extension set" },
-    { src: "sunny-wu-lash-17.webp", alt: "Reclining brunette client with finished lash extensions" },
-    { src: "sunny-wu-lash-18.webp", alt: "Close-up of long, separated lash extensions" },
-    { src: "sunny-wu-lash-19.webp", alt: "Close-up of both eyes with finished lash extensions" },
     { src: "sunny-wu-lash-20.webp", alt: "Blonde client showing a finished lash set in natural light" },
     { src: "sunny-wu-lash-21.webp", alt: "Profile close-up highlighting the curl and fullness of a lash set" },
     { src: "sunny-wu-lash-22.webp", alt: "Side profile close-up of a dense volume lash set" },
@@ -365,9 +361,10 @@ export const todos = collectTodos(site);
 if (import.meta.env.PROD && todos.length > 0) {
   // eslint-disable-next-line no-console
   console.warn(
-    `\n⚠ ${todos.length} TODO value(s) left in src/data/site.ts:\n` +
+    `\n? ${todos.length} TODO value(s) left in src/data/site.ts:\n` +
       todos.map((entry) => `  - ${entry}`).join("\n") +
       "\n",
   );
 }
+
 

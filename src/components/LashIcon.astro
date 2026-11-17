@@ -1,49 +1,54 @@
 ---
 interface Props { variant?: number; }
 const { variant = 0 } = Astro.props;
-const counts = [7, 9, 11, 13, 7];
-const count = counts[variant % counts.length];
+const count = [7, 9, 11, 13, 7][variant % 5];
 const lashes = Array.from({ length: count }, (_, i) => {
   const t = (i + 0.5) / count;
   const x = 12 + 72 * t;
-  const y = 32 + 64 * t * (1 - t);
-  const length = 12 + Math.sin(Math.PI * t) * 10;
-  const spread = (t - 0.5) * 19;
-  return { x, y, length, spread };
+  const openY = 43 - 60 * t * (1 - t);
+  const closedY = 43 + 30 * t * (1 - t);
+  const length = 9 + Math.sin(Math.PI * t) * 9;
+  const spread = (t - 0.5) * 24;
+  return { x, openY, closedY, length, spread };
 });
 ---
 
 <span class="lash-icon" aria-hidden="true">
   <svg viewBox="0 0 96 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-    <g class="lash-icon__fan">
-      <path d="M12 32 Q48 64 84 32" stroke-width="2.8" />
-      {lashes.map(({ x, y, length, spread }) => (
+    <g class="lash-icon__open">
+      <path d="M12 43 Q48 13 84 43 Q48 70 12 43Z" fill="white" stroke-width="2" />
+      <circle cx="48" cy="43" r="10" fill="currentColor" stroke="none" opacity=".25" />
+      <circle cx="48" cy="43" r="5.5" fill="currentColor" stroke="none" />
+      <circle cx="51" cy="40" r="2" fill="white" stroke="none" />
+      <path d="M12 43 Q48 13 84 43" stroke-width="3" />
+      {lashes.map(({ x, openY, length, spread }) => (
         <>
-          <path d={`M${x} ${y} Q${x + spread * 0.8} ${y - length * 0.35} ${x + spread} ${y - length}`} stroke-width={variant === 4 ? 2.8 : 2} />
+          <path d={`M${x} ${openY} Q${x + spread * .7} ${openY - length * .35} ${x + spread} ${openY - length}`} stroke-width={variant === 4 ? 2.6 : 2.1} />
           {variant > 0 && variant < 4 && (
-            <path d={`M${x} ${y} Q${x + spread - 4} ${y - length * 0.5} ${x + spread - 3} ${y - length + 2}`} stroke-width="1.3" />
-          )}
-          {variant === 3 && (
-            <path d={`M${x} ${y} Q${x + spread + 4} ${y - length * 0.5} ${x + spread + 3} ${y - length + 1}`} stroke-width="1.1" />
+            <path d={`M${x} ${openY} Q${x + spread + 3} ${openY - length * .5} ${x + spread + 3} ${openY - length + 2}`} stroke-width="1.3" />
           )}
         </>
       ))}
     </g>
-    <path class="lash-icon__sparkle" d="M78 9v10 M73 14h10" stroke-width="1.7" />
+    <g class="lash-icon__closed">
+      <path d="M12 43 Q48 58 84 43" stroke-width="3" />
+      {lashes.map(({ x, closedY, length, spread }) => (
+        <path d={`M${x} ${closedY} Q${x + spread * .7} ${closedY + length * .35} ${x + spread} ${closedY + length * .65}`} stroke-width="2" />
+      ))}
+    </g>
   </svg>
 </span>
 
 <style>
-  .lash-icon { display: inline-grid; place-items: center; flex-shrink: 0; width: 4.5rem; height: 4.5rem; margin-bottom: 1rem; border: 1px solid #80519320; border-radius: 1.25rem; background: #ffffffa8; color: var(--color-primary); transition: transform 220ms ease, background-color 220ms ease; }
-  svg { width: 3.75rem; height: 3.25rem; overflow: visible; }
-  .lash-icon__fan { transform-box: view-box; transform-origin: 48px 48px; }
-  .lash-icon__sparkle { transform-box: fill-box; transform-origin: center; }
+  .lash-icon { display: inline-grid; place-items: center; flex-shrink: 0; width: 4.5rem; height: 4.5rem; margin-bottom: 1rem; border: 1px solid #80519320; border-radius: 1.25rem; background: #ffffffa8; color: var(--color-primary); }
+  svg { width: 4rem; height: 3.5rem; overflow: visible; }
+  .lash-icon__open { transform-box: view-box; transform-origin: 48px 43px; }
+  .lash-icon__closed { opacity: 0; }
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    :global(.service-card:hover) .lash-icon, :global(.service-details:hover) .lash-icon { transform: translateY(-3px) rotate(-4deg); background: white; }
-    :global(.service-card:hover) .lash-icon__fan, :global(.service-details:hover) .lash-icon__fan { animation: lash-flutter 800ms ease-in-out; }
-    :global(.service-card:hover) .lash-icon__sparkle, :global(.service-details:hover) .lash-icon__sparkle { animation: lash-sparkle 800ms ease-in-out; }
+    :global(.service-card:hover) .lash-icon__open, :global(.service-details:hover) .lash-icon__open { animation: eye-blink 2.6s ease-in-out infinite; }
+    :global(.service-card:hover) .lash-icon__closed, :global(.service-details:hover) .lash-icon__closed { animation: closed-lashes 2.6s ease-in-out infinite; }
   }
-  @keyframes lash-flutter { 0%, 100% { transform: scaleY(1); } 30% { transform: scaleY(.7) rotate(-3deg); } 65% { transform: scaleY(1.08) rotate(2deg); } }
-  @keyframes lash-sparkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35) rotate(90deg); opacity: .55; } }
-  @media (prefers-reduced-motion: reduce) { .lash-icon { transition: none; } }
+  @keyframes eye-blink { 0%, 24%, 100% { transform: scaleY(1); opacity: 1; } 10%, 14% { transform: scaleY(.02); opacity: 0; } }
+  @keyframes closed-lashes { 0%, 5%, 22%, 100% { opacity: 0; } 10%, 14% { opacity: 1; } }
 </style>
+

@@ -64,6 +64,48 @@ const ga4Id = import.meta.env.PUBLIC_GA4_ID;
   </head>
   <body class="font-body text-ink">
     <slot />
+    <script>
+      // sms: links work great on phones, but on a desktop/laptop (no
+      // registered messaging app) the browser has nothing to hand the link
+      // to and some fall back to a web search — e.g. Chrome on Windows
+      // searching Google for the raw "sms:+1..." string. On devices with a
+      // fine pointer and real hover (desktops, laptops), copy the phone
+      // number instead of navigating; phones/tablets get the native sms:
+      // behavior untouched.
+      document.addEventListener("click", (event) => {
+        const target = event.target instanceof Element ? event.target.closest('a[href^="sms:"]') : null;
+        if (!target) return;
+
+        const isDesktopPointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        if (!isDesktopPointer) return;
+
+        event.preventDefault();
+
+        const digits = (target.getAttribute("href") ?? "").replace(/[^\d]/g, "").replace(/^1/, "");
+        const formatted =
+          digits.length === 10 ? `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}` : digits;
+
+        const original = target.textContent;
+        const restore = () => {
+          target.textContent = original;
+        };
+
+        const showCopied = () => {
+          target.textContent = `Copied ${formatted}`;
+          window.setTimeout(restore, 2500);
+        };
+
+        if (navigator.clipboard?.writeText) {
+          navigator.clipboard.writeText(formatted).then(showCopied).catch(() => {
+            target.textContent = formatted;
+            window.setTimeout(restore, 2500);
+          });
+        } else {
+          target.textContent = formatted;
+          window.setTimeout(restore, 2500);
+        }
+      });
+    </script>
     {ga4Id && (
       <script>
         document.addEventListener("click", (event) => {

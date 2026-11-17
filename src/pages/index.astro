@@ -1,5 +1,6 @@
 ---
-import { Image, getImage } from "astro:assets";
+import { getImage } from "astro:assets";
+import ExpandableImage from "../components/ExpandableImage.astro";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -97,7 +98,7 @@ const structuredData = {
         </div>
         <div class="hero-collage relative mx-auto aspect-square w-full max-w-md">
           <div class="absolute left-0 top-2 z-10 w-[54%] -rotate-6 overflow-hidden rounded-2xl border-4 border-canvas bg-surface shadow-lg shadow-primary/10 sm:top-4">
-            <Image
+            <ExpandableImage
               src={gallery01}
               alt="Numbered lash-length mapping chart applied across the lash line before applying volume lash extensions"
               width={320}
@@ -107,7 +108,7 @@ const structuredData = {
             />
           </div>
           <div class="absolute bottom-2 right-0 z-20 w-[50%] rotate-6 overflow-hidden rounded-2xl border-4 border-canvas bg-surface shadow-lg shadow-primary/10 sm:bottom-4">
-            <Image
+            <ExpandableImage
               src={gallery02}
               alt="Close-up comparison of natural lashes before and after a full set of volume lash extensions"
               width={300}
@@ -117,7 +118,7 @@ const structuredData = {
             />
           </div>
           <div class="absolute left-1/2 top-1/2 z-30 w-[68%] -translate-x-1/2 -translate-y-1/2 -rotate-2 overflow-hidden rounded-[2rem] border-4 border-canvas bg-surface shadow-xl shadow-primary/20">
-            <Image
+            <ExpandableImage
               src={gallery05}
               alt="Close-up of a finished set of Sunny's full lash extensions"
               width={420}
@@ -159,7 +160,7 @@ const structuredData = {
         <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {galleryPreview.map((item, index) => (
             <div class="photo-card aspect-square">
-              <Image
+              <ExpandableImage
                 src={item.src}
                 alt={item.alt}
                 width={300}
@@ -182,7 +183,7 @@ const structuredData = {
     <section class="home-about border-t border-line bg-surface px-6 py-16 sm:py-20">
       <div class="mx-auto flex max-w-xl flex-col items-center gap-5 text-center">
         <div class="about-photo h-32 w-32 overflow-hidden rounded-full bg-canvas">
-          <Image
+          <ExpandableImage
             src={aboutPhoto}
             alt={`${site.about.ownerName}, owner of ${site.name}`}
             width={200}

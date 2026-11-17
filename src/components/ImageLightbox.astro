@@ -1,0 +1,81 @@
+<dialog class="image-lightbox" aria-label="Expanded photo viewer">
+  <div class="image-lightbox__panel">
+    <button type="button" class="image-lightbox__close" aria-label="Close photo viewer" autofocus>&#215;</button>
+    <figure>
+      <img class="image-lightbox__image" alt="" />
+      <figcaption aria-live="polite"></figcaption>
+    </figure>
+    <div class="image-lightbox__navigation">
+      <button type="button" data-previous aria-label="Previous photo">&larr; Previous</button>
+      <span data-count aria-live="polite"></span>
+      <button type="button" data-next aria-label="Next photo">Next &rarr;</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>(".image-lightbox");
+  if (dialog) {
+    const photos = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-expand-image]"));
+    const image = dialog.querySelector<HTMLImageElement>("img")!;
+    const caption = dialog.querySelector("figcaption")!;
+    const count = dialog.querySelector("[data-count]")!;
+    let current = 0;
+    let trigger: HTMLAnchorElement | null = null;
+    let previousOverflow = "";
+
+    const show = (index: number) => {
+      current = (index + photos.length) % photos.length;
+      const photo = photos[current];
+      image.src = photo.href;
+      image.alt = photo.dataset.caption || "Lash photo";
+      caption.textContent = image.alt;
+      count.textContent = `${current + 1} / ${photos.length}`;
+    };
+
+    photos.forEach((photo, index) => {
+      photo.addEventListener("click", (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        trigger = photo;
+        show(index);
+        previousOverflow = document.documentElement.style.overflow;
+        document.documentElement.style.overflow = "hidden";
+        dialog.showModal();
+      });
+    });
+    dialog.querySelector(".image-lightbox__close")!.addEventListener("click", () => dialog.close());
+    dialog.querySelector("[data-previous]")!.addEventListener("click", () => show(current - 1));
+    dialog.querySelector("[data-next]")!.addEventListener("click", () => show(current + 1));
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        show(current + (event.key === "ArrowLeft" ? -1 : 1));
+      }
+    });
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", () => {
+      document.documentElement.style.overflow = previousOverflow;
+      trigger?.focus({ preventScroll: true });
+    });
+  }
+</script>
+
+<style>
+  .image-lightbox { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; padding: 1rem; margin: 0; border: 0; background: transparent; color: white; }
+  .image-lightbox[open] { display: grid; place-items: center; }
+  .image-lightbox::backdrop { background: #160f1aee; }
+  .image-lightbox__panel { position: relative; width: min(100%, 70rem); max-height: 100%; padding-top: 3rem; }
+  figure { margin: 0; }
+  .image-lightbox__image { display: block; width: 100%; height: min(70dvh, 54rem); object-fit: contain; }
+  figcaption { margin: .8rem auto 0; max-width: 50rem; text-align: center; font-size: .875rem; line-height: 1.5; }
+  button { min-height: 44px; padding: .5rem .9rem; border: 1px solid #ffffff70; border-radius: 999px; background: #302037; color: white; cursor: pointer; }
+  button:hover { background: #63436d; }
+  button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+  .image-lightbox__close { position: absolute; right: 0; top: 0; min-width: 44px; }
+  .image-lightbox__navigation { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: .8rem; }
+  [data-count] { min-width: 4rem; text-align: center; font-size: .875rem; }
+  @media (max-width: 600px) { .image-lightbox__image { height: 60dvh; } .image-lightbox { padding: .75rem; } }
+</style>

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ImageLightbox from "../components/ImageLightbox.astro";
 import { site } from "../data/site";
 
 interface Props {
@@ -64,6 +65,7 @@ const ga4Id = import.meta.env.PUBLIC_GA4_ID;
   </head>
   <body class="font-body text-ink">
     <slot />
+    <ImageLightbox />
     <script>
       // sms: links work great on phones, but on a desktop/laptop (no
       // registered messaging app) the browser has nothing to hand the link

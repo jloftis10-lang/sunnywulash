@@ -1,5 +1,5 @@
 // Single source of truth for all business content. Components read from
-// here — no business text should be hard-coded in a component. Any value
+// here - no business text should be hard-coded in a component. Any value
 // the client hasn't provided yet is a literal "TODO: <field>" string so it
 // stays visible on the live site (and in the build warning below) until
 // it's replaced with real content.
@@ -83,6 +83,19 @@ export interface Brand {
   logoPath: string; // empty = render a text wordmark instead of an image
 }
 
+export interface Promotion {
+  eyebrow: string;
+  title: string;
+  fillOffer: string;
+  setOffer: string;
+  validThrough: string;
+  fullSetPrices: {
+    name: string;
+    regular: string;
+    special: string;
+  }[];
+}
+
 export interface SiteConfig {
   name: string;
   tagline: string;
@@ -103,6 +116,7 @@ export interface SiteConfig {
   gallery: GalleryImage[];
   about: About;
   brand: Brand;
+  promotion: Promotion;
 }
 
 const allDaysOpen = { open: "8:00 AM", close: "8:00 PM" };
@@ -115,7 +129,7 @@ export const site: SiteConfig = {
   phone: "(858) 231-7210",
   // Real, from the client's own business card.
   email: "sunnywu0916@yahoo.com",
-  // No booking system — the client wants clients to text or email her
+  // No booking system - the client wants clients to text or email her
   // directly rather than go through Yelp's request-appointment flow. This
   // is the primary CTA destination everywhere "Book Now" appears. Yelp
   // stays as a secondary link (footer icon, reviews, JSON-LD sameAs) but
@@ -132,7 +146,7 @@ export const site: SiteConfig = {
   ],
   // Confirmed with the client: this is a home studio, not a commercial
   // address. The street address that was on Yelp must never be shown on
-  // the site — per the master prompt's own rule, a home studio shows an
+  // the site - per the master prompt's own rule, a home studio shows an
   // area only. Do not re-add a street/city/zip here.
   serviceArea: "San Marcos, CA",
   social: {
@@ -143,7 +157,7 @@ export const site: SiteConfig = {
   },
   // Real prices and durations, provided directly by the client. Refill
   // pricing covers both a 2-week and a 3-week interval, plus a 30-minute
-  // touch-up — all real, nothing estimated.
+  // touch-up - all real, nothing estimated.
   services: [
     {
       name: "Classic Full Set",
@@ -191,7 +205,7 @@ export const site: SiteConfig = {
       description: "Deepens the color of your natural lashes.",
       price: "$25",
       // The client's texted list gave "Eyebrows tint" twice at 10m each
-      // rather than listing lash tint separately — applying the repeated
+      // rather than listing lash tint separately - applying the repeated
       // value here since both tint services are otherwise the same quick
       // service. Flagged to the client to confirm.
       duration: "10m",
@@ -219,7 +233,7 @@ export const site: SiteConfig = {
       description: "Safe removal of existing lash extensions.",
       price: "$25",
       // The client's list had both "Eyebrows removal" and "Eyelashes
-      // removal" at 15m — applying it here since this is the only
+      // removal" at 15m - applying it here since this is the only
       // removal service in the catalog. Flagged to the client to confirm.
       duration: "15m",
     },
@@ -229,20 +243,20 @@ export const site: SiteConfig = {
     deposit: "A 15% deposit is required to book.",
     // Real, from the client's exact words.
     cancellation: "Cancellations require at least 24 hours' notice. A $25 fee applies to cancellations made with less notice, though exceptions may be made for special circumstances.",
-    // Left empty on purpose — the client chose not to provide a late
+    // Left empty on purpose - the client chose not to provide a late
     // arrival policy. Policies page hides this line when empty, same as
     // prep/aftercare below.
     lateArrival: "",
     // Real, inferred directly from the fact that both 2-week and 3-week
-    // refill prices are published — not an invented policy.
-    fillTiming: "Refills are available at either 2 or 3 weeks — see Services for pricing at each interval.",
+    // refill prices are published - not an invented policy.
+    fillTiming: "Refills are available at either 2 or 3 weeks - see Services for pricing at each interval.",
   },
-  // Left empty on purpose — no real prep/aftercare content has been
+  // Left empty on purpose - no real prep/aftercare content has been
   // provided yet. Policies page hides each section when empty, same as
   // the FAQ accordion and reviews section.
   prep: [],
   aftercare: [],
-  // Left empty on purpose — no real FAQ content has been provided yet.
+  // Left empty on purpose - no real FAQ content has been provided yet.
   // The Policies & Aftercare page hides the FAQ accordion when this is
   // empty, same as the reviews section, rather than show placeholder Q&As.
   faqs: [],
@@ -281,7 +295,7 @@ export const site: SiteConfig = {
     ownerName: "Sunny W.",
     // Real, the client's own full bio sent directly (supersedes Yelp's
     // truncated "About the Business" fragment).
-    bio: "I'm a skilled, experienced, professional master lash artist. Every set is customized to your natural lashes — their length, density, thickness, and your personal preferences — to create a beautiful, personalized American-style lash look that is uniquely yours. My commitment to premium products, professional application, cleanliness, and consistent results has earned the trust, love, and recognition of many clients. I work independently out of my home studio.",
+    bio: "I'm a skilled, experienced, professional master lash artist. Every set is customized to your natural lashes - their length, density, thickness, and your personal preferences - to create a beautiful, personalized American-style lash look that is uniquely yours. My commitment to premium products, professional application, cleanliness, and consistent results has earned the trust, love, and recognition of many clients. I work independently out of my home studio.",
     // Real, from the client directly.
     experience: "8 years",
     // Real, from the client directly.
@@ -289,7 +303,7 @@ export const site: SiteConfig = {
   },
   brand: {
     // Light and dark purple, per the client's request. See
-    // src/styles/global.css for the full token set and contrast notes —
+    // src/styles/global.css for the full token set and contrast notes -
     // every pairing used for text is checked against WCAG AA.
     colors: {
       primary: "#784d91",
@@ -302,6 +316,18 @@ export const site: SiteConfig = {
       body: "Nunito",
     },
     logoPath: "", // BrandLogo.astro imports the logo for Astro image optimization.
+  },
+  promotion: {
+    eyebrow: "Limited-time offer",
+    title: "Holiday Lash Special",
+    fillOffer: "$10 off one lash fill",
+    setOffer: "$20 off any full lash set",
+    validThrough: "October 15, 2026 - February 15, 2027",
+    fullSetPrices: [
+      { name: "Classic Set", regular: "$109", special: "$89" },
+      { name: "Hybrid Set", regular: "$139", special: "$119" },
+      { name: "Volume Set", regular: "$159", special: "$139" },
+    ],
   },
 };
 
@@ -325,8 +351,9 @@ export const todos = collectTodos(site);
 if (import.meta.env.PROD && todos.length > 0) {
   // eslint-disable-next-line no-console
   console.warn(
-    `\n⚠ ${todos.length} TODO value(s) left in src/data/site.ts:\n` +
+    `\n? ${todos.length} TODO value(s) left in src/data/site.ts:\n` +
       todos.map((entry) => `  - ${entry}`).join("\n") +
       "\n",
   );
 }
+

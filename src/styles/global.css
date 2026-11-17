@@ -82,6 +82,23 @@ a:focus-visible, summary:focus-visible, button:focus-visible {
 .page-shell { min-height: 55vh; }
 .page-shell > h1 { color: var(--color-primary-dark); }
 .page-shell > h1::after { content: ""; display: block; width: 4rem; height: .4rem; margin: 1rem auto 0; border-radius: 999px; background: var(--color-coral); }
+.holiday-special { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; margin-bottom: 4rem; padding: clamp(1.6rem, 4vw, 3.2rem); border: 3px solid var(--color-primary-dark); border-radius: 2.5rem .9rem 2.5rem .9rem; background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary) 58%, #976cb0); color: white; box-shadow: 9px 10px 0 var(--color-coral); }
+.holiday-special::before { content: ""; position: absolute; z-index: -1; width: 19rem; height: 19rem; right: -6rem; bottom: -9rem; border: 3rem solid #ffffff12; border-radius: 50%; }
+.holiday-special__content { max-width: 44rem; }
+.holiday-special__sparkle { position: absolute; right: 2rem; top: 1.3rem; color: #ffd8d1; font-size: 2.4rem; transform: rotate(12deg); }
+.holiday-special__eyebrow { margin-bottom: .55rem; color: #ffe3de; font-size: .78rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+.holiday-special h1 { max-width: 12ch; color: white; font-size: clamp(2.2rem, 5vw, 4rem); line-height: .98; }
+.holiday-special__offers { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.4rem; }
+.holiday-special__offers p { padding: .65rem 1rem; border-radius: 999px; background: white; color: var(--color-primary-dark); }
+.holiday-special__prices { display: grid; gap: .5rem; max-width: 32rem; margin-top: 1.5rem; }
+.holiday-special__prices > div { display: grid; grid-template-columns: 1fr auto auto; gap: .8rem; align-items: baseline; padding-bottom: .45rem; border-bottom: 1px solid #ffffff40; font-weight: 800; }
+.holiday-special__regular { color: #eadff0; text-decoration: line-through; text-decoration-thickness: 2px; }
+.holiday-special__prices strong { color: #fff1ee; font-size: 1.2rem; }
+.holiday-special__dates { margin: 1.2rem 0 1.6rem; color: #f5edf9; font-size: .9rem; }
+.holiday-special__dates strong { color: white; }
+.holiday-special .book-button { background: var(--color-coral); color: #301f38; border-color: white; box-shadow: 4px 4px 0 white; }
+.holiday-special__badge { display: grid; place-items: center; width: 8.5rem; aspect-ratio: 1; border: 3px solid white; border-radius: 50% 45% 50% 45%; background: var(--color-coral); color: #301f38; font-size: 2.25rem; font-weight: 900; line-height: .8; text-align: center; transform: rotate(7deg); box-shadow: 7px 7px 0 #ffffff38; }
+.holiday-special__badge span { font-size: 1rem; letter-spacing: .1em; }
 .service-card { border: 2px solid var(--color-line); border-radius: 2rem 2rem 2rem .65rem; background: var(--color-surface); box-shadow: 5px 5px 0 var(--color-lavender); }
 .service-card:nth-child(even) { background: var(--color-peach); border-color: #ffd1c7; box-shadow: 5px 5px 0 #ffd1c7; }
 .about-portrait { border: 7px solid white; border-radius: 45% 45% 2rem 2rem; box-shadow: 8px 8px 0 var(--color-lavender); }
@@ -101,9 +118,14 @@ a:focus-visible, summary:focus-visible, button:focus-visible {
   .hero-collage { max-width: 27rem; justify-self: center; }
   .home-services, .home-about, .home-visit { border-radius: 2rem 2rem 0 0; }
   .home-gallery .photo-card { transform: none; }
+  .holiday-special { grid-template-columns: 1fr; padding: 1.6rem; border-radius: 2rem .75rem 2rem .75rem; box-shadow: 6px 7px 0 var(--color-coral); }
+  .holiday-special__badge { display: none; }
+  .holiday-special__sparkle { right: 1.25rem; top: 1rem; }
+  .holiday-special__prices > div { gap: .55rem; font-size: .9rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .book-button { transition: none; }
   .book-button:hover, .book-button:active { transform: none; }
 }
+

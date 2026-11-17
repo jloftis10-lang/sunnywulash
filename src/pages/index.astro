@@ -2,7 +2,6 @@
 import { Image, getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import BrandLogo from "../components/BrandLogo.astro";
 import Footer from "../components/Footer.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
@@ -84,7 +83,6 @@ const structuredData = {
     <section class="home-hero px-6">
       <div class="hero-layout">
         <div class="hero-copy">
-          <BrandLogo hero />
           <p class="hero-location">Lash extensions in {site.area}</p>
           <h1 class="mt-3 font-display">Lashes made <span>for you.</span></h1>
           <p class="hero-description">Find your lash look with Sunny. From soft and natural to full and fluttery, every set is customized to your eyes.</p>

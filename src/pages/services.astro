@@ -18,7 +18,7 @@ const addOns = site.services.filter((service) => !service.refill);
 
   <main class="page-shell mx-auto max-w-5xl px-6 py-16 sm:py-20">
     <section class="holiday-special" aria-labelledby="holiday-special-title">
-      <div class="holiday-special__sparkle" aria-hidden="true">?</div>
+      <div class="holiday-special__sparkle" aria-hidden="true">✨</div>
       <div class="holiday-special__content">
         <p class="holiday-special__eyebrow">{site.promotion.eyebrow}</p>
         <h1 id="holiday-special-title">{site.promotion.title}</h1>
@@ -60,11 +60,11 @@ const addOns = site.services.filter((service) => !service.refill);
             <div class="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-4 text-center text-xs">
               <div>
                 <p class="font-semibold text-ink">{service.refill.twoWeek}</p>
-                <p class="mt-1 text-muted">Refill � 2 wks</p>
+                <p class="mt-1 text-muted">Refill · 2 wks</p>
               </div>
               <div>
                 <p class="font-semibold text-ink">{service.refill.threeWeek}</p>
-                <p class="mt-1 text-muted">Refill � 3 wks</p>
+                <p class="mt-1 text-muted">Refill · 3 wks</p>
               </div>
               <div>
                 <p class="font-semibold text-ink">{service.refill.touchUp}</p>

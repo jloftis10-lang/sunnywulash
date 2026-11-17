@@ -351,7 +351,7 @@ export const todos = collectTodos(site);
 if (import.meta.env.PROD && todos.length > 0) {
   // eslint-disable-next-line no-console
   console.warn(
-    `\n? ${todos.length} TODO value(s) left in src/data/site.ts:\n` +
+    `\n⚠ ${todos.length} TODO value(s) left in src/data/site.ts:\n` +
       todos.map((entry) => `  - ${entry}`).join("\n") +
       "\n",
   );

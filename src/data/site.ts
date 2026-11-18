@@ -173,7 +173,7 @@ export const site: SiteConfig = {
       description: "A mix of classic and volume techniques for extra texture without full drama.",
       price: "$139",
       duration: "1h 30m",
-      refill: { twoWeek: "$75", threeWeek: "$95", touchUp: "$45 (30 min)" },
+      refill: { twoWeek: "$80", threeWeek: "$100", touchUp: "$45 (30 min)" },
     },
     {
       name: "Volume Full Set",

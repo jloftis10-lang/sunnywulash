@@ -83,21 +83,6 @@ export interface Brand {
   logoPath: string; // empty = render a text wordmark instead of an image
 }
 
-export interface Promotion {
-  eyebrow: string;
-  title: string;
-  audienceNote: string;
-  fillOffer: string;
-  setOffer: string;
-  validThrough: string;
-  specialPrices: {
-    name: string;
-    regular: string;
-    special: string;
-  }[];
-  closingMessage: string;
-}
-
 export interface SiteConfig {
   name: string;
   tagline: string;
@@ -118,7 +103,6 @@ export interface SiteConfig {
   gallery: GalleryImage[];
   about: About;
   brand: Brand;
-  promotion: Promotion;
 }
 
 const allDaysOpen = { open: "8:00 AM", close: "8:00 PM" };
@@ -330,23 +314,6 @@ export const site: SiteConfig = {
       body: "Nunito",
     },
     logoPath: "", // BrandLogo.astro imports the logo for Astro image optimization.
-  },
-  promotion: {
-    eyebrow: "Limited-time offer",
-    title: "🎄 Holiday Lash Special",
-    audienceNote: "For your first visit",
-    fillOffer: "$10 off fills",
-    setOffer: "$20 off any full lash set",
-    validThrough: "October 15, 2026 - February 15, 2027",
-    specialPrices: [
-      { name: "Classic Set", regular: "$109", special: "$89" },
-      { name: "Hybrid Set", regular: "$139", special: "$119" },
-      { name: "Volume Set", regular: "$159", special: "$139" },
-      { name: "Wet Mascara Set", regular: "$129", special: "$109" },
-      { name: "Mega Volume Set", regular: "$189", special: "$169" },
-      { name: "Lash Lift", regular: "$85", special: "$75" },
-    ],
-    closingMessage: "✨ Book your holiday lash appointment today and enjoy these savings before the limited-time offer ends! ❤️",
   },
 };
 

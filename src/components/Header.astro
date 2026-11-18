@@ -1,9 +1,11 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
 import BookNowButton from "./BookNowButton.astro";
+import { specials } from "../data/specials";
 
 const navLinks = [
   { label: "Services", href: "/services" },
+  ...(specials.active ? [{ label: "Specials", href: "/specials" }] : []),
   { label: "Gallery", href: "/gallery" },
   { label: "About", href: "/about" },
   { label: "Policies", href: "/policies" },

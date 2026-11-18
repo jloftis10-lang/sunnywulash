@@ -101,6 +101,10 @@ a:focus-visible, summary:focus-visible, button:focus-visible {
 .holiday-special__closing { margin-top: 1.1rem; max-width: 36rem; color: #f5edf9; font-size: .9rem; line-height: 1.5; }
 .holiday-special__badge { display: grid; place-items: center; width: 8.5rem; aspect-ratio: 1; border: 3px solid white; border-radius: 50% 45% 50% 45%; background: var(--color-coral); color: #301f38; font-size: 2.25rem; font-weight: 900; line-height: .8; text-align: center; transform: rotate(7deg); box-shadow: 7px 7px 0 #ffffff38; }
 .holiday-special__badge span { font-size: 1rem; letter-spacing: .1em; }
+.specials-teaser { display: flex; align-items: center; gap: .75rem; margin-bottom: 3rem; padding: 1rem 1.4rem; border: 2px solid var(--color-primary-dark); border-radius: 999px; background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary) 58%, #976cb0); color: white; font-size: .9rem; box-shadow: 5px 6px 0 var(--color-coral); transition: transform .15s ease; }
+.specials-teaser:hover { transform: translateY(-2px); }
+.specials-teaser__sparkle { font-size: 1.3rem; flex-shrink: 0; }
+.specials-teaser__cta { color: var(--color-coral); font-weight: 800; white-space: nowrap; }
 .service-card { border: 2px solid var(--color-line); border-radius: 2rem 2rem 2rem .65rem; background: var(--color-surface); box-shadow: 5px 5px 0 var(--color-lavender); }
 .service-card:nth-child(even) { background: var(--color-peach); border-color: #ffd1c7; box-shadow: 5px 5px 0 #ffd1c7; }
 .about-portrait { border: 7px solid white; border-radius: 45% 45% 2rem 2rem; box-shadow: 8px 8px 0 var(--color-lavender); }

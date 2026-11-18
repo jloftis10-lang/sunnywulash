@@ -1,0 +1,59 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import StickyBookBar from "../components/StickyBookBar.astro";
+import BookNowButton from "../components/BookNowButton.astro";
+import { site } from "../data/site";
+import { specials } from "../data/specials";
+---
+
+<Layout
+  title={`Specials & Promotions | ${site.name}`}
+  description={specials.active ? `${specials.title} — ${specials.setOffer}.` : `Current specials and promotions at ${site.name}.`}
+>
+  <Header />
+
+  <main class="page-shell mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    {specials.active ? (
+      <section class="holiday-special" aria-labelledby="holiday-special-title">
+        <div class="holiday-special__sparkle" aria-hidden="true">✨</div>
+        <div class="holiday-special__content">
+          <p class="holiday-special__eyebrow">{specials.eyebrow}</p>
+          <h1 id="holiday-special-title">{specials.title}</h1>
+          <p class="holiday-special__audience">{specials.audienceNote}</p>
+          <div class="holiday-special__offers" aria-label="Holiday lash offers">
+            <p><strong>{specials.fillOffer}</strong></p>
+            <p><strong>{specials.setOffer}</strong></p>
+          </div>
+          <div class="holiday-special__prices">
+            {specials.specialPrices.map((price) => (
+              <div>
+                <span>{price.name}</span>
+                <span class="holiday-special__regular">{price.regular}</span>
+                <strong>{price.special}</strong>
+              </div>
+            ))}
+          </div>
+          <p class="holiday-special__dates">
+            📅 Offer valid <strong>{specials.validThrough}</strong>
+          </p>
+          <BookNowButton label="Book Your Holiday Lashes" />
+          <p class="holiday-special__closing">{specials.closingMessage}</p>
+        </div>
+        <div class="holiday-special__badge" aria-hidden="true">$20<br /><span>OFF</span></div>
+      </section>
+    ) : (
+      <div class="py-20 text-center">
+        <h1 class="font-display text-4xl text-ink">Specials &amp; Promotions</h1>
+        <p class="mt-4 text-muted">No specials are running right now — check back soon, or text {site.name} to ask about current offers.</p>
+        <div class="mt-8 flex justify-center">
+          <BookNowButton />
+        </div>
+      </div>
+    )}
+  </main>
+
+  <Footer />
+  <StickyBookBar />
+</Layout>

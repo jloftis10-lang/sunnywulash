@@ -10,7 +10,7 @@ import { site } from "../data/site";
 
 import gallery02 from "../assets/gallery/sunny-wu-lash-02.png";
 import gallery01 from "../assets/gallery/sunny-wu-lash-01.png";
-import gallery05 from "../assets/gallery/sunny-wu-lash-05.png";
+import gallery08 from "../assets/gallery/sunny-wu-lash-08.png";
 import gallery13 from "../assets/gallery/sunny-wu-lash-13.png";
 import gallery14 from "../assets/gallery/sunny-wu-lash-14.webp";
 import gallery16 from "../assets/gallery/sunny-wu-lash-16.webp";
@@ -37,7 +37,7 @@ const smsHref = `sms:+1${site.phone.replace(/\D/g, "")}`;
 // link must never be derived from one. See site.ts's serviceArea comment.
 
 // Use the real lash photo from the hero as the share-preview image.
-const ogImageResult = await getImage({ src: gallery05, width: 1200, height: 630 });
+const ogImageResult = await getImage({ src: gallery08, width: 1200, height: 630 });
 const ogImage = ogImageResult.src;
 
 const hoursSpecification = {
@@ -119,8 +119,8 @@ const structuredData = {
           </div>
           <div class="absolute left-1/2 top-1/2 z-30 w-[68%] -translate-x-1/2 -translate-y-1/2 -rotate-2 overflow-hidden rounded-[2rem] border-4 border-canvas bg-surface shadow-xl shadow-primary/20">
             <ExpandableImage
-              src={gallery05}
-              alt="Close-up of a finished set of Sunny's full lash extensions"
+              src={gallery08}
+              alt="Close-up profile view of finished volume lash extensions"
               width={420}
               height={420}
               sizes="(min-width: 1152px) 360px, (min-width: 768px) 32vw, 68vw"

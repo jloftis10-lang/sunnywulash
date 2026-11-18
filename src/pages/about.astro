@@ -7,6 +7,15 @@ import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
 import aboutPhoto from "../assets/about-sunny.png";
+import lashDownward from "../assets/training/lash-direction-downward.png";
+import lashUpward from "../assets/training/lash-direction-upward.png";
+import lashStraight from "../assets/training/lash-direction-straight.png";
+
+const lashDirectionDiagrams = [
+  { src: lashDownward, label: "Downward", alt: "Training diagram showing downward lash-direction mapping with numbered angle references" },
+  { src: lashUpward, label: "Upward", alt: "Training diagram showing upward lash-direction mapping with numbered angle references" },
+  { src: lashStraight, label: "Straight", alt: "Training diagram showing straight lash-direction mapping with numbered angle references" },
+];
 ---
 
 <Layout
@@ -39,6 +48,28 @@ import aboutPhoto from "../assets/about-sunny.png";
           <span class="font-semibold text-ink">Training: </span>
           {site.about.training}
         </p>
+      </div>
+    </div>
+
+    <div class="mt-16">
+      <h2 class="font-display text-2xl text-ink">Lash Direction Reference</h2>
+      <p class="mt-2 max-w-2xl text-sm leading-6 text-muted">
+        Reference diagrams from Sunny's SmarterU training course on mapping lash direction — not photos of her own client work, just the study material behind her technique.
+      </p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-3">
+        {lashDirectionDiagrams.map((diagram) => (
+          <figure class="rounded-2xl border border-line bg-surface p-4 text-center">
+            <ExpandableImage
+              src={diagram.src}
+              alt={diagram.alt}
+              width={360}
+              height={400}
+              loading="lazy"
+              class="mx-auto h-auto w-full max-w-[220px]"
+            />
+            <figcaption class="mt-2 text-sm font-semibold text-ink">{diagram.label}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
 

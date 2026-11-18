@@ -88,6 +88,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible {
 .holiday-special__sparkle { position: absolute; right: 2rem; top: 1.3rem; color: #ffd8d1; font-size: 2.4rem; transform: rotate(12deg); }
 .holiday-special__eyebrow { margin-bottom: .55rem; color: #ffe3de; font-size: .78rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
 .holiday-special h1 { max-width: 12ch; color: white; font-size: clamp(2.2rem, 5vw, 4rem); line-height: .98; }
+.holiday-special__audience { display: inline-block; margin-top: .6rem; padding: .3rem .85rem; border-radius: 999px; background: #ffffff26; color: #fff1ee; font-size: .8rem; font-weight: 800; letter-spacing: .03em; }
 .holiday-special__offers { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.4rem; }
 .holiday-special__offers p { padding: .65rem 1rem; border-radius: 999px; background: white; color: var(--color-primary-dark); }
 .holiday-special__prices { display: grid; gap: .5rem; max-width: 32rem; margin-top: 1.5rem; }
@@ -97,6 +98,7 @@ a:focus-visible, summary:focus-visible, button:focus-visible {
 .holiday-special__dates { margin: 1.2rem 0 1.6rem; color: #f5edf9; font-size: .9rem; }
 .holiday-special__dates strong { color: white; }
 .holiday-special .book-button { background: var(--color-coral); color: #301f38; border-color: white; box-shadow: 4px 4px 0 white; }
+.holiday-special__closing { margin-top: 1.1rem; max-width: 36rem; color: #f5edf9; font-size: .9rem; line-height: 1.5; }
 .holiday-special__badge { display: grid; place-items: center; width: 8.5rem; aspect-ratio: 1; border: 3px solid white; border-radius: 50% 45% 50% 45%; background: var(--color-coral); color: #301f38; font-size: 2.25rem; font-weight: 900; line-height: .8; text-align: center; transform: rotate(7deg); box-shadow: 7px 7px 0 #ffffff38; }
 .holiday-special__badge span { font-size: 1rem; letter-spacing: .1em; }
 .service-card { border: 2px solid var(--color-line); border-radius: 2rem 2rem 2rem .65rem; background: var(--color-surface); box-shadow: 5px 5px 0 var(--color-lavender); }

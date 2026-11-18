@@ -23,12 +23,13 @@ const addOns = site.services.filter((service) => !service.refill);
       <div class="holiday-special__content">
         <p class="holiday-special__eyebrow">{site.promotion.eyebrow}</p>
         <h1 id="holiday-special-title">{site.promotion.title}</h1>
+        <p class="holiday-special__audience">{site.promotion.audienceNote}</p>
         <div class="holiday-special__offers" aria-label="Holiday lash offers">
           <p><strong>{site.promotion.fillOffer}</strong></p>
           <p><strong>{site.promotion.setOffer}</strong></p>
         </div>
         <div class="holiday-special__prices">
-          {site.promotion.fullSetPrices.map((price) => (
+          {site.promotion.specialPrices.map((price) => (
             <div>
               <span>{price.name}</span>
               <span class="holiday-special__regular">{price.regular}</span>
@@ -37,9 +38,10 @@ const addOns = site.services.filter((service) => !service.refill);
           ))}
         </div>
         <p class="holiday-special__dates">
-          Offer valid <strong>{site.promotion.validThrough}</strong>
+          📅 Offer valid <strong>{site.promotion.validThrough}</strong>
         </p>
         <BookNowButton label="Book Your Holiday Lashes" />
+        <p class="holiday-special__closing">{site.promotion.closingMessage}</p>
       </div>
       <div class="holiday-special__badge" aria-hidden="true">$20<br /><span>OFF</span></div>
     </section>

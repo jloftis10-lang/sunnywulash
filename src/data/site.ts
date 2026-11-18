@@ -86,14 +86,16 @@ export interface Brand {
 export interface Promotion {
   eyebrow: string;
   title: string;
+  audienceNote: string;
   fillOffer: string;
   setOffer: string;
   validThrough: string;
-  fullSetPrices: {
+  specialPrices: {
     name: string;
     regular: string;
     special: string;
   }[];
+  closingMessage: string;
 }
 
 export interface SiteConfig {
@@ -331,15 +333,20 @@ export const site: SiteConfig = {
   },
   promotion: {
     eyebrow: "Limited-time offer",
-    title: "Holiday Lash Special",
-    fillOffer: "$10 off one lash fill",
+    title: "🎄 Holiday Lash Special",
+    audienceNote: "For your first visit",
+    fillOffer: "$10 off fills",
     setOffer: "$20 off any full lash set",
     validThrough: "October 15, 2026 - February 15, 2027",
-    fullSetPrices: [
+    specialPrices: [
       { name: "Classic Set", regular: "$109", special: "$89" },
       { name: "Hybrid Set", regular: "$139", special: "$119" },
       { name: "Volume Set", regular: "$159", special: "$139" },
+      { name: "Wet Mascara Set", regular: "$129", special: "$109" },
+      { name: "Mega Volume Set", regular: "$189", special: "$169" },
+      { name: "Lash Lift", regular: "$85", special: "$75" },
     ],
+    closingMessage: "✨ Book your holiday lash appointment today and enjoy these savings before the limited-time offer ends! ❤️",
   },
 };
 

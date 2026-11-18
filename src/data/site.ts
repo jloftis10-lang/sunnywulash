@@ -113,8 +113,8 @@ export const site: SiteConfig = {
   tagline: "A master lash stylist",
   area: "San Marcos, CA",
   phone: "(858) 231-7210",
-  // Real, from the client's own business card.
-  email: "sunnywu0916@yahoo.com",
+  // Real, from the client directly.
+  email: "sunnywulash@gmail.com",
   // No booking system - the client wants clients to text or email her
   // directly rather than go through Yelp's request-appointment flow. This
   // is the primary CTA destination everywhere "Book Now" appears. Yelp

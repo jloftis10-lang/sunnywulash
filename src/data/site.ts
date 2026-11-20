@@ -270,7 +270,6 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-01.png", alt: "Numbered lash-length mapping chart applied across the lash line before applying volume lash extensions" },
     { src: "sunny-wu-lash-02.png", alt: "Close-up comparison of natural lashes before and after a full set of volume lash extensions" },
     { src: "sunny-wu-lash-03.png", alt: "Closed eyes with full volume lash extensions and under-eye gel pads during an application" },
-    { src: "sunny-wu-lash-04.png", alt: "Finished eye with a numbered lash-mapping chart overlaid showing precise lash placement" },
     { src: "sunny-wu-lash-07.png", alt: "Lash appointment in Sunny's studio" },
     { src: "sunny-wu-lash-08.png", alt: "Close-up profile view of finished volume lash extensions" },
     { src: "sunny-wu-lash-09.webp", alt: "Close-up of a finished lash extension set" },

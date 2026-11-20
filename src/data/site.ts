@@ -289,6 +289,7 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-25.webp", alt: "Closed eyes with natural-looking volume lash extensions, photographed from above during application" },
     { src: "sunny-wu-lash-26.webp", alt: "Close-up of one eye showing full, natural volume lash extensions" },
     { src: "sunny-wu-lash-27.webp", alt: "Two client photos of lash lift results, lashes lifted and curled without extensions" },
+    { src: "sunny-wu-lash-28.webp", alt: "Before and after comparison of eyebrow lamination, showing brow hairs set in a fuller, more uniform shape" },
   ],
   about: {
     // Real, from the client's own Yelp business-owner listing.

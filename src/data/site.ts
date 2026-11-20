@@ -288,6 +288,7 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-24.webp", alt: "Close-up of full, curled volume lash extensions" },
     { src: "sunny-wu-lash-25.webp", alt: "Closed eyes with natural-looking volume lash extensions, photographed from above during application" },
     { src: "sunny-wu-lash-26.webp", alt: "Close-up of one eye showing full, natural volume lash extensions" },
+    { src: "sunny-wu-lash-27.webp", alt: "Two client photos of lash lift results, lashes lifted and curled without extensions" },
   ],
   about: {
     // Real, from the client's own Yelp business-owner listing.

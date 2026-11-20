@@ -60,6 +60,12 @@ export interface Review {
 export interface GalleryImage {
   src: string;
   alt: string;
+  // Photos that belong side by side (e.g. before/after) share the same
+  // pairId and render together in one double-wide card instead of two
+  // separate single tiles. pairLabel is an optional small caption shown
+  // on that photo's half (e.g. "Before", "After").
+  pairId?: string;
+  pairLabel?: string;
 }
 
 export interface About {
@@ -287,8 +293,10 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-24.webp", alt: "Close-up of full, curled volume lash extensions" },
     { src: "sunny-wu-lash-25.webp", alt: "Closed eyes with natural-looking volume lash extensions, photographed from above during application" },
     { src: "sunny-wu-lash-26.webp", alt: "Close-up of one eye showing full, natural volume lash extensions" },
-    { src: "sunny-wu-lash-27.webp", alt: "Two client photos of lash lift results, lashes lifted and curled without extensions" },
-    { src: "sunny-wu-lash-28.webp", alt: "Before and after comparison of eyebrow lamination, showing brow hairs set in a fuller, more uniform shape" },
+    { src: "sunny-wu-lash-92.webp", alt: "Close-up of one client's finished lash lift result, lashes curled without extensions", pairId: "lash-lift-1" },
+    { src: "sunny-wu-lash-93.webp", alt: "Close-up of another client's finished lash lift result, lashes curled without extensions", pairId: "lash-lift-1" },
+    { src: "sunny-wu-lash-94.webp", alt: "Eyebrow before lamination, natural unshaped brow hairs", pairId: "brow-lamination-1", pairLabel: "Before" },
+    { src: "sunny-wu-lash-95.webp", alt: "Eyebrow after lamination, brow hairs set in a fuller, more uniform shape", pairId: "brow-lamination-1", pairLabel: "After" },
     { src: "sunny-wu-lash-29.webp", alt: "Client smiling with a finished natural lash extension set" },
     { src: "sunny-wu-lash-30.webp", alt: "Client portrait showing soft, natural-looking lash extensions" },
     { src: "sunny-wu-lash-31.webp", alt: "Close-up of a single eye with a natural volume lash set" },

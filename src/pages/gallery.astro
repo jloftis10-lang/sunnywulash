@@ -28,8 +28,6 @@ import gallery23 from "../assets/gallery/sunny-wu-lash-23.webp";
 import gallery24 from "../assets/gallery/sunny-wu-lash-24.webp";
 import gallery25 from "../assets/gallery/sunny-wu-lash-25.webp";
 import gallery26 from "../assets/gallery/sunny-wu-lash-26.webp";
-import gallery27 from "../assets/gallery/sunny-wu-lash-27.webp";
-import gallery28 from "../assets/gallery/sunny-wu-lash-28.webp";
 import gallery29 from "../assets/gallery/sunny-wu-lash-29.webp";
 import gallery30 from "../assets/gallery/sunny-wu-lash-30.webp";
 import gallery31 from "../assets/gallery/sunny-wu-lash-31.webp";
@@ -93,6 +91,10 @@ import gallery88 from "../assets/gallery/sunny-wu-lash-88.webp";
 import gallery89 from "../assets/gallery/sunny-wu-lash-89.webp";
 import gallery90 from "../assets/gallery/sunny-wu-lash-90.webp";
 import gallery91 from "../assets/gallery/sunny-wu-lash-91.webp";
+import gallery92 from "../assets/gallery/sunny-wu-lash-92.webp";
+import gallery93 from "../assets/gallery/sunny-wu-lash-93.webp";
+import gallery94 from "../assets/gallery/sunny-wu-lash-94.webp";
+import gallery95 from "../assets/gallery/sunny-wu-lash-95.webp";
 
 const galleryAssets: Record<string, ImageMetadata> = {
   "sunny-wu-lash-01.png": gallery01,
@@ -115,8 +117,6 @@ const galleryAssets: Record<string, ImageMetadata> = {
   "sunny-wu-lash-24.webp": gallery24,
   "sunny-wu-lash-25.webp": gallery25,
   "sunny-wu-lash-26.webp": gallery26,
-  "sunny-wu-lash-27.webp": gallery27,
-  "sunny-wu-lash-28.webp": gallery28,
   "sunny-wu-lash-29.webp": gallery29,
   "sunny-wu-lash-30.webp": gallery30,
   "sunny-wu-lash-31.webp": gallery31,
@@ -180,7 +180,32 @@ const galleryAssets: Record<string, ImageMetadata> = {
   "sunny-wu-lash-89.webp": gallery89,
   "sunny-wu-lash-90.webp": gallery90,
   "sunny-wu-lash-91.webp": gallery91,
+  "sunny-wu-lash-92.webp": gallery92,
+  "sunny-wu-lash-93.webp": gallery93,
+  "sunny-wu-lash-94.webp": gallery94,
+  "sunny-wu-lash-95.webp": gallery95,
 };
+
+// Photos that share a pairId (e.g. before/after) render together in one
+// double-wide card instead of as two separate single tiles.
+type GalleryGroup =
+  | { kind: "single"; item: (typeof site.gallery)[number] }
+  | { kind: "pair"; items: [(typeof site.gallery)[number], (typeof site.gallery)[number]] };
+
+const galleryGroups: GalleryGroup[] = [];
+const seenPairIds = new Set<string>();
+site.gallery.forEach((item, i) => {
+  if (item.pairId) {
+    if (seenPairIds.has(item.pairId)) return;
+    const partner = site.gallery.find((other, j) => j !== i && other.pairId === item.pairId);
+    if (partner) {
+      galleryGroups.push({ kind: "pair", items: [item, partner] });
+      seenPairIds.add(item.pairId);
+      return;
+    }
+  }
+  galleryGroups.push({ kind: "single", item });
+});
 ---
 
 <Layout
@@ -194,19 +219,41 @@ const galleryAssets: Record<string, ImageMetadata> = {
     <h1 class="text-center font-display text-4xl text-ink">Gallery</h1>
     <p class="mt-3 text-center text-sm text-muted">Real sets, real clients - no stock photos.</p>
 
-    <div class="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-7">
-      {site.gallery.map((item, index) => (
-        <div class="photo-card aspect-square">
-          <ExpandableImage
-            src={galleryAssets[item.src]}
-            alt={item.alt}
-            width={400}
-            height={400}
-            loading={index < 3 ? "eager" : "lazy"}
-            class="h-full w-full object-cover"
-          />
-        </div>
-      ))}
+    <div class="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-7">
+      {galleryGroups.map((group, index) => {
+        const loading = index < 4 ? "eager" : "lazy";
+        if (group.kind === "pair") {
+          return (
+            <div class="photo-card photo-pair col-span-2">
+              {group.items.map((photo) => (
+                <div class="photo-pair__half">
+                  <ExpandableImage
+                    src={galleryAssets[photo.src]}
+                    alt={photo.alt}
+                    width={400}
+                    height={400}
+                    loading={loading}
+                    class="h-full w-full object-cover"
+                  />
+                  {photo.pairLabel && <span class="photo-pair__label">{photo.pairLabel}</span>}
+                </div>
+              ))}
+            </div>
+          );
+        }
+        return (
+          <div class="photo-card aspect-square">
+            <ExpandableImage
+              src={galleryAssets[group.item.src]}
+              alt={group.item.alt}
+              width={400}
+              height={400}
+              loading={loading}
+              class="h-full w-full object-cover"
+            />
+          </div>
+        );
+      })}
     </div>
 
     <div class="mt-8 text-center">

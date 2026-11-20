@@ -5,7 +5,7 @@ import Footer from "../components/Footer.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
-import { specials } from "../data/specials";
+import { specials, socialSpecials } from "../data/specials";
 ---
 
 <Layout
@@ -15,7 +15,17 @@ import { specials } from "../data/specials";
   <Header />
 
   <main class="page-shell mx-auto max-w-5xl px-6 py-16 sm:py-20">
-    {specials.active ? (
+    {!specials.active && !socialSpecials.active && (
+      <div class="py-20 text-center">
+        <h1 class="font-display text-4xl text-ink">Specials &amp; Promotions</h1>
+        <p class="mt-4 text-muted">No specials are running right now — check back soon, or text {site.name} to ask about current offers.</p>
+        <div class="mt-8 flex justify-center">
+          <BookNowButton />
+        </div>
+      </div>
+    )}
+
+    {specials.active && (
       <section class="holiday-special" aria-labelledby="holiday-special-title">
         <div class="holiday-special__sparkle" aria-hidden="true">✨</div>
         <div class="holiday-special__content">
@@ -40,14 +50,29 @@ import { specials } from "../data/specials";
         </div>
         <div class="holiday-special__badge" aria-hidden="true">$20<br /><span>OFF</span></div>
       </section>
-    ) : (
-      <div class="py-20 text-center">
-        <h1 class="font-display text-4xl text-ink">Specials &amp; Promotions</h1>
-        <p class="mt-4 text-muted">No specials are running right now — check back soon, or text {site.name} to ask about current offers.</p>
-        <div class="mt-8 flex justify-center">
-          <BookNowButton />
+    )}
+
+    {socialSpecials.active && (
+      <section class="social-special" aria-labelledby="social-special-title">
+        <div class="social-special__sparkle" aria-hidden="true">✨</div>
+        <div class="social-special__content">
+          <p class="social-special__eyebrow">{socialSpecials.eyebrow}</p>
+          {specials.active ? (
+            <h2 id="social-special-title">{socialSpecials.title}</h2>
+          ) : (
+            <h1 id="social-special-title" class="font-display">{socialSpecials.title}</h1>
+          )}
+          <p class="social-special__message">{socialSpecials.message}</p>
+          <div class="social-special__links">
+            {site.social.instagram && (
+              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" class="pill-link">Follow on Instagram</a>
+            )}
+            {site.social.facebook && (
+              <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" class="pill-link">Follow on Facebook</a>
+            )}
+          </div>
         </div>
-      </div>
+      </section>
     )}
   </main>
 

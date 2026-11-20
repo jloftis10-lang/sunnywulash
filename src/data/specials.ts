@@ -2,13 +2,18 @@
 // lives in this one file. Edit the values below and redeploy — nothing
 // else in the codebase needs to change.
 //
+// This file holds two separate things:
+// - `specials` — the current specific promotion (prices, dates, etc.)
+// - `socialSpecials` — an always-on banner pointing visitors to social
+//   media for whatever deals are currently posted there
+//
 // - To change a price or any wording, edit the string in quotes.
 // - To add a discounted item, copy one line inside `specialPrices` below
 //   and edit its three values. To remove one, delete its line.
-// - When the promotion ends, set `active` to `false`. That hides the
-//   "Specials" nav link, the /services teaser, and the /specials page
-//   content automatically — you don't need to delete anything below, so
-//   it's ready to flip back on (or edit) for the next promotion.
+// - When a promotion ends, set its `active` to `false`. That hides the
+//   relevant nav link / teaser / page content automatically — you don't
+//   need to delete anything below, so it's ready to flip back on (or
+//   edit) for the next one.
 
 export interface SpecialPrice {
   name: string;
@@ -26,6 +31,24 @@ export interface Specials {
   specialPrices: SpecialPrice[];
   closingMessage: string;
 }
+
+// A separate, evergreen banner (not tied to a specific promotion) pointing
+// visitors to social media for current deals. Shows on /specials below the
+// active promotion above, if there is one. Set `active` to `false` to hide
+// it — e.g. if she stops posting specials on social media.
+export interface SocialSpecials {
+  active: boolean;
+  eyebrow: string;
+  title: string;
+  message: string;
+}
+
+export const socialSpecials: SocialSpecials = {
+  active: true,
+  eyebrow: "Stay in the loop",
+  title: "📱 More Specials on Social Media",
+  message: "Follow along on Instagram and Facebook — that's where new deals, flash sales, and limited-time offers get posted first.",
+};
 
 export const specials: Specials = {
   active: true,

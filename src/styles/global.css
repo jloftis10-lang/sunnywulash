@@ -105,6 +105,16 @@ a:focus-visible, summary:focus-visible, button:focus-visible {
 .specials-teaser:hover { transform: translateY(-2px); }
 .specials-teaser__sparkle { font-size: 1.3rem; flex-shrink: 0; }
 .specials-teaser__cta { color: var(--color-coral); font-weight: 800; white-space: nowrap; }
+.social-special { position: relative; isolation: isolate; overflow: hidden; padding: clamp(1.6rem, 4vw, 3.2rem); border: 3px solid var(--color-primary-dark); border-radius: 2.5rem .9rem 2.5rem .9rem; background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary) 58%, #976cb0); color: white; text-align: center; box-shadow: 9px 10px 0 var(--color-coral); }
+.social-special::before { content: ""; position: absolute; z-index: -1; width: 16rem; height: 16rem; left: -5rem; top: -7rem; border: 3rem solid #ffffff12; border-radius: 50%; }
+.social-special__sparkle { display: block; margin: 0 auto .75rem; font-size: 2rem; }
+.social-special__content { max-width: 34rem; margin: 0 auto; }
+.social-special__eyebrow { margin-bottom: .55rem; color: #ffe3de; font-size: .78rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+.social-special h1, .social-special h2 { color: white; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.08; }
+.social-special__message { margin-top: 1rem; color: #f5edf9; font-size: .95rem; line-height: 1.6; }
+.social-special__links { display: flex; flex-wrap: wrap; justify-content: center; gap: .85rem; margin-top: 1.6rem; }
+.social-special .pill-link { background: white; border-color: white; box-shadow: 4px 4px 0 var(--color-coral); }
+.social-special .pill-link:hover { background: var(--color-lavender); }
 .service-card { border: 2px solid var(--color-line); border-radius: 2rem 2rem 2rem .65rem; background: var(--color-surface); box-shadow: 5px 5px 0 var(--color-lavender); }
 .service-card:nth-child(even) { background: var(--color-peach); border-color: #ffd1c7; box-shadow: 5px 5px 0 #ffd1c7; }
 .about-portrait { border: 7px solid white; border-radius: 45% 45% 2rem 2rem; box-shadow: 8px 8px 0 var(--color-lavender); }

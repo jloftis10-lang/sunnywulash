@@ -290,6 +290,18 @@ export const site: SiteConfig = {
     { src: "sunny-wu-lash-26.webp", alt: "Close-up of one eye showing full, natural volume lash extensions" },
     { src: "sunny-wu-lash-27.webp", alt: "Two client photos of lash lift results, lashes lifted and curled without extensions" },
     { src: "sunny-wu-lash-28.webp", alt: "Before and after comparison of eyebrow lamination, showing brow hairs set in a fuller, more uniform shape" },
+    { src: "sunny-wu-lash-29.webp", alt: "Client smiling with a finished natural lash extension set" },
+    { src: "sunny-wu-lash-30.webp", alt: "Client portrait showing soft, natural-looking lash extensions" },
+    { src: "sunny-wu-lash-31.webp", alt: "Close-up of a single eye with a natural volume lash set" },
+    { src: "sunny-wu-lash-32.webp", alt: "Close-up of both eyes with a soft, natural lash extension set" },
+    { src: "sunny-wu-lash-33.webp", alt: "Client with eyes closed showing a finished lash set from the side" },
+    { src: "sunny-wu-lash-34.webp", alt: "Client wearing a mask with a bold, full lash extension set" },
+    { src: "sunny-wu-lash-35.webp", alt: "Overhead close-up of closed eyes during a lash appointment" },
+    { src: "sunny-wu-lash-36.webp", alt: "Overhead close-up of a finished lash set with eyes closed" },
+    { src: "sunny-wu-lash-37.webp", alt: "Close-up of closed eyes showing full, curled lash extensions" },
+    { src: "sunny-wu-lash-38.webp", alt: "Side profile close-up of a finished lash extension set" },
+    { src: "sunny-wu-lash-39.webp", alt: "Close-up of a bold, dramatic lash extension set" },
+    { src: "sunny-wu-lash-40.webp", alt: "Client wearing a mask with a full lash extension set" },
   ],
   about: {
     // Real, from the client's own Yelp business-owner listing.

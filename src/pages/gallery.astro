@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
+import SocialSpecialsTeaser from "../components/SocialSpecialsTeaser.astro";
 import { site } from "../data/site";
 
 import gallery01 from "../assets/gallery/sunny-wu-lash-01.png";
@@ -30,6 +31,18 @@ import gallery25 from "../assets/gallery/sunny-wu-lash-25.webp";
 import gallery26 from "../assets/gallery/sunny-wu-lash-26.webp";
 import gallery27 from "../assets/gallery/sunny-wu-lash-27.webp";
 import gallery28 from "../assets/gallery/sunny-wu-lash-28.webp";
+import gallery29 from "../assets/gallery/sunny-wu-lash-29.webp";
+import gallery30 from "../assets/gallery/sunny-wu-lash-30.webp";
+import gallery31 from "../assets/gallery/sunny-wu-lash-31.webp";
+import gallery32 from "../assets/gallery/sunny-wu-lash-32.webp";
+import gallery33 from "../assets/gallery/sunny-wu-lash-33.webp";
+import gallery34 from "../assets/gallery/sunny-wu-lash-34.webp";
+import gallery35 from "../assets/gallery/sunny-wu-lash-35.webp";
+import gallery36 from "../assets/gallery/sunny-wu-lash-36.webp";
+import gallery37 from "../assets/gallery/sunny-wu-lash-37.webp";
+import gallery38 from "../assets/gallery/sunny-wu-lash-38.webp";
+import gallery39 from "../assets/gallery/sunny-wu-lash-39.webp";
+import gallery40 from "../assets/gallery/sunny-wu-lash-40.webp";
 
 const galleryAssets: Record<string, ImageMetadata> = {
   "sunny-wu-lash-01.png": gallery01,
@@ -55,6 +68,18 @@ const galleryAssets: Record<string, ImageMetadata> = {
   "sunny-wu-lash-26.webp": gallery26,
   "sunny-wu-lash-27.webp": gallery27,
   "sunny-wu-lash-28.webp": gallery28,
+  "sunny-wu-lash-29.webp": gallery29,
+  "sunny-wu-lash-30.webp": gallery30,
+  "sunny-wu-lash-31.webp": gallery31,
+  "sunny-wu-lash-32.webp": gallery32,
+  "sunny-wu-lash-33.webp": gallery33,
+  "sunny-wu-lash-34.webp": gallery34,
+  "sunny-wu-lash-35.webp": gallery35,
+  "sunny-wu-lash-36.webp": gallery36,
+  "sunny-wu-lash-37.webp": gallery37,
+  "sunny-wu-lash-38.webp": gallery38,
+  "sunny-wu-lash-39.webp": gallery39,
+  "sunny-wu-lash-40.webp": gallery40,
 };
 ---
 
@@ -65,6 +90,7 @@ const galleryAssets: Record<string, ImageMetadata> = {
   <Header />
 
   <main class="page-shell mx-auto max-w-5xl px-6 py-16 sm:py-20">
+    <SocialSpecialsTeaser />
     <h1 class="text-center font-display text-4xl text-ink">Gallery</h1>
     <p class="mt-3 text-center text-sm text-muted">Real sets, real clients - no stock photos.</p>
 

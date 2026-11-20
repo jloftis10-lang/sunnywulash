@@ -1,0 +1,12 @@
+---
+import { socialSpecials } from "../data/specials";
+---
+
+{socialSpecials.active && (
+  <a href="/specials" class="specials-teaser">
+    <span class="specials-teaser__sparkle" aria-hidden="true">✨</span>
+    <span>
+      <strong>{socialSpecials.title}</strong> — Follow us for current deals. <span class="specials-teaser__cta">See details &rarr;</span>
+    </span>
+  </a>
+)}

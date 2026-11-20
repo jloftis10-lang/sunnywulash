@@ -4,6 +4,7 @@ import ExpandableImage from "../components/ExpandableImage.astro";
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import SocialSpecialsTeaser from "../components/SocialSpecialsTeaser.astro";
 import StickyBookBar from "../components/StickyBookBar.astro";
 import BookNowButton from "../components/BookNowButton.astro";
 import { site } from "../data/site";
@@ -83,6 +84,9 @@ const structuredData = {
   <Header />
 
   <main>
+    <div class="mx-auto max-w-5xl px-6 pt-6">
+      <SocialSpecialsTeaser />
+    </div>
     <!-- Hero -->
     <section class="home-hero px-6">
       <div class="hero-layout">

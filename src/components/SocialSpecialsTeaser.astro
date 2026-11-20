@@ -1,12 +1,13 @@
 ---
 import { socialSpecials } from "../data/specials";
+import { site } from "../data/site";
 ---
 
 {socialSpecials.active && (
-  <a href="/specials" class="specials-teaser">
+  <a href={site.social.yelp} target="_blank" rel="noopener noreferrer" class="specials-teaser">
     <span class="specials-teaser__sparkle" aria-hidden="true">✨</span>
     <span>
-      <strong>{socialSpecials.title}</strong> — Follow us for current deals. <span class="specials-teaser__cta">See details &rarr;</span>
+      <strong>Follow us on social media</strong> for new deals and updates. <span class="specials-teaser__cta">Visit our Yelp &rarr;</span>
     </span>
   </a>
 )}

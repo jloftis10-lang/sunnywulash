@@ -192,20 +192,23 @@ type GalleryGroup =
   | { kind: "single"; item: (typeof site.gallery)[number] }
   | { kind: "pair"; items: [(typeof site.gallery)[number], (typeof site.gallery)[number]] };
 
-const galleryGroups: GalleryGroup[] = [];
+// Pairs (before/after) are shown first, ahead of the single photos.
+const pairGroups: GalleryGroup[] = [];
+const singleGroups: GalleryGroup[] = [];
 const seenPairIds = new Set<string>();
 site.gallery.forEach((item, i) => {
   if (item.pairId) {
     if (seenPairIds.has(item.pairId)) return;
     const partner = site.gallery.find((other, j) => j !== i && other.pairId === item.pairId);
     if (partner) {
-      galleryGroups.push({ kind: "pair", items: [item, partner] });
+      pairGroups.push({ kind: "pair", items: [item, partner] });
       seenPairIds.add(item.pairId);
       return;
     }
   }
-  galleryGroups.push({ kind: "single", item });
+  singleGroups.push({ kind: "single", item });
 });
+const galleryGroups: GalleryGroup[] = [...pairGroups, ...singleGroups];
 ---
 
 <Layout

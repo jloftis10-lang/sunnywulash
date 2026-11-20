@@ -33,7 +33,6 @@ const galleryPreview = [
 ];
 
 const telHref = `tel:+1${site.phone.replace(/\D/g, "")}`;
-const smsHref = `sms:+1${site.phone.replace(/\D/g, "")}`;
 // Home studio - no street address exists to map to, and a "Get Directions"
 // link must never be derived from one. See site.ts's serviceArea comment.
 
@@ -250,10 +249,7 @@ const structuredData = {
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
           <a href={telHref} class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
-            Call {site.phone}
-          </a>
-          <a href={smsHref} class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
-            Text {site.phone}
+            Text or Call {site.phone}
           </a>
           <a href={`mailto:${site.email}`} class="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 py-3 text-sm font-semibold text-ink hover:border-primary hover:text-primary">
             Email

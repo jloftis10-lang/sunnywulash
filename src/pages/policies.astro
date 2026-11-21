@@ -17,7 +17,7 @@ const ogImage = ogImageResult.src;
 
 <Layout
   title={`Policies & Aftercare | ${site.name}`}
-  description={`Booking, deposit, cancellation, and aftercare information for ${site.name}.`}
+  description={`Booking, cancellation, and aftercare information for ${site.name}.`}
   image={ogImage}
 >
   <Header />
@@ -27,11 +27,6 @@ const ogImage = ogImageResult.src;
     <h1 class="text-center font-display text-4xl text-ink">Policies &amp; Aftercare</h1>
 
     <section class="mt-12">
-      <h2 class="font-display text-2xl text-ink">Booking &amp; Deposits</h2>
-      <p class="mt-3 text-sm leading-7 text-muted">{site.policies.deposit}</p>
-    </section>
-
-    <section class="mt-10">
       <h2 class="font-display text-2xl text-ink">Cancellations{site.policies.lateArrival && " & Late Arrivals"}</h2>
       <p class="mt-3 text-sm leading-7 text-muted">
         <span class="font-semibold text-ink">Cancellations: </span>

@@ -40,7 +40,6 @@ export interface ServiceItem {
 }
 
 export interface Policies {
-  deposit: string;
   cancellation: string;
   lateArrival: string;
   fillTiming: string;
@@ -231,8 +230,6 @@ export const site: SiteConfig = {
     },
   ],
   policies: {
-    // Real, from the client directly.
-    deposit: "A 15% deposit is required to book.",
     // Real, from the client's exact words.
     cancellation: "Cancellations require at least 24 hours' notice. A $25 fee applies to cancellations made with less notice, though exceptions may be made for special circumstances.",
     // Left empty on purpose - the client chose not to provide a late
